@@ -21,14 +21,14 @@ import json
 
 from typing import Optional
 from pydantic import BaseModel, StrictStr
-from openapi_client.models.device import Device
+from sensorbucket.models.pipeline import Pipeline
 
-class GetDevice200Response(BaseModel):
+class UpdatePipeline200Response(BaseModel):
     """
-    GetDevice200Response
+    UpdatePipeline200Response
     """
     message: Optional[StrictStr] = None
-    data: Optional[Device] = None
+    data: Optional[Pipeline] = None
     __properties = ["message", "data"]
 
     class Config:
@@ -45,8 +45,8 @@ class GetDevice200Response(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> GetDevice200Response:
-        """Create an instance of GetDevice200Response from a JSON string"""
+    def from_json(cls, json_str: str) -> UpdatePipeline200Response:
+        """Create an instance of UpdatePipeline200Response from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
@@ -61,17 +61,17 @@ class GetDevice200Response(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> GetDevice200Response:
-        """Create an instance of GetDevice200Response from a dict"""
+    def from_dict(cls, obj: dict) -> UpdatePipeline200Response:
+        """Create an instance of UpdatePipeline200Response from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return GetDevice200Response.parse_obj(obj)
+            return UpdatePipeline200Response.parse_obj(obj)
 
-        _obj = GetDevice200Response.parse_obj({
+        _obj = UpdatePipeline200Response.parse_obj({
             "message": obj.get("message"),
-            "data": Device.from_dict(obj.get("data")) if obj.get("data") is not None else None
+            "data": Pipeline.from_dict(obj.get("data")) if obj.get("data") is not None else None
         })
         return _obj
 

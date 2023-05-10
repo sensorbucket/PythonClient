@@ -19,20 +19,16 @@ import re  # noqa: F401
 import json
 
 
-from typing import List
-from pydantic import BaseModel, Field, StrictInt, conlist
-from openapi_client.models.paginated_response_links import PaginatedResponseLinks
-from openapi_client.models.pipeline import Pipeline
+from typing import List, Optional
+from pydantic import BaseModel, conlist
+from sensorbucket.models.sensor import Sensor
 
-class ListPipelines200Response(BaseModel):
+class ListDeviceSensors200ResponseAllOf(BaseModel):
     """
-    ListPipelines200Response
+    ListDeviceSensors200ResponseAllOf
     """
-    links: PaginatedResponseLinks = Field(...)
-    page_size: StrictInt = Field(...)
-    total_count: StrictInt = Field(...)
-    data: conlist(Pipeline) = Field(...)
-    __properties = ["links", "page_size", "total_count", "data"]
+    data: Optional[conlist(Sensor)] = None
+    __properties = ["data"]
 
     class Config:
         """Pydantic configuration"""
@@ -48,8 +44,8 @@ class ListPipelines200Response(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> ListPipelines200Response:
-        """Create an instance of ListPipelines200Response from a JSON string"""
+    def from_json(cls, json_str: str) -> ListDeviceSensors200ResponseAllOf:
+        """Create an instance of ListDeviceSensors200ResponseAllOf from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
@@ -58,9 +54,6 @@ class ListPipelines200Response(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of links
-        if self.links:
-            _dict['links'] = self.links.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in data (list)
         _items = []
         if self.data:
@@ -71,19 +64,16 @@ class ListPipelines200Response(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> ListPipelines200Response:
-        """Create an instance of ListPipelines200Response from a dict"""
+    def from_dict(cls, obj: dict) -> ListDeviceSensors200ResponseAllOf:
+        """Create an instance of ListDeviceSensors200ResponseAllOf from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return ListPipelines200Response.parse_obj(obj)
+            return ListDeviceSensors200ResponseAllOf.parse_obj(obj)
 
-        _obj = ListPipelines200Response.parse_obj({
-            "links": PaginatedResponseLinks.from_dict(obj.get("links")) if obj.get("links") is not None else None,
-            "page_size": obj.get("page_size"),
-            "total_count": obj.get("total_count"),
-            "data": [Pipeline.from_dict(_item) for _item in obj.get("data")] if obj.get("data") is not None else None
+        _obj = ListDeviceSensors200ResponseAllOf.parse_obj({
+            "data": [Sensor.from_dict(_item) for _item in obj.get("data")] if obj.get("data") is not None else None
         })
         return _obj
 

@@ -19,20 +19,17 @@ import re  # noqa: F401
 import json
 
 
-from typing import List
-from pydantic import BaseModel, Field, StrictInt, conlist
-from openapi_client.models.paginated_response_links import PaginatedResponseLinks
-from openapi_client.models.sensor import Sensor
+from typing import Optional
+from pydantic import BaseModel, StrictStr
+from sensorbucket.models.device import Device
 
-class ListDeviceSensors200Response(BaseModel):
+class CreateDevice201Response(BaseModel):
     """
-    ListDeviceSensors200Response
+    CreateDevice201Response
     """
-    links: PaginatedResponseLinks = Field(...)
-    page_size: StrictInt = Field(...)
-    total_count: StrictInt = Field(...)
-    data: conlist(Sensor) = Field(...)
-    __properties = ["links", "page_size", "total_count", "data"]
+    message: Optional[StrictStr] = None
+    data: Optional[Device] = None
+    __properties = ["message", "data"]
 
     class Config:
         """Pydantic configuration"""
@@ -48,8 +45,8 @@ class ListDeviceSensors200Response(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> ListDeviceSensors200Response:
-        """Create an instance of ListDeviceSensors200Response from a JSON string"""
+    def from_json(cls, json_str: str) -> CreateDevice201Response:
+        """Create an instance of CreateDevice201Response from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
@@ -58,32 +55,23 @@ class ListDeviceSensors200Response(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of links
-        if self.links:
-            _dict['links'] = self.links.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of each item in data (list)
-        _items = []
+        # override the default output from pydantic by calling `to_dict()` of data
         if self.data:
-            for _item in self.data:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['data'] = _items
+            _dict['data'] = self.data.to_dict()
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> ListDeviceSensors200Response:
-        """Create an instance of ListDeviceSensors200Response from a dict"""
+    def from_dict(cls, obj: dict) -> CreateDevice201Response:
+        """Create an instance of CreateDevice201Response from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return ListDeviceSensors200Response.parse_obj(obj)
+            return CreateDevice201Response.parse_obj(obj)
 
-        _obj = ListDeviceSensors200Response.parse_obj({
-            "links": PaginatedResponseLinks.from_dict(obj.get("links")) if obj.get("links") is not None else None,
-            "page_size": obj.get("page_size"),
-            "total_count": obj.get("total_count"),
-            "data": [Sensor.from_dict(_item) for _item in obj.get("data")] if obj.get("data") is not None else None
+        _obj = CreateDevice201Response.parse_obj({
+            "message": obj.get("message"),
+            "data": Device.from_dict(obj.get("data")) if obj.get("data") is not None else None
         })
         return _obj
 

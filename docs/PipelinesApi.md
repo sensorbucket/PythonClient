@@ -1,4 +1,4 @@
-# openapi_client.PipelinesApi
+# sensorbucket.PipelinesApi
 
 All URIs are relative to *https://sensorbucket.nl/api*
 
@@ -24,15 +24,15 @@ Create a new pipeline.   A pipeline determines which workers, in which order the
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.create_pipeline200_response import CreatePipeline200Response
-from openapi_client.models.create_pipeline_request import CreatePipelineRequest
-from openapi_client.rest import ApiException
+import sensorbucket
+from sensorbucket.models.create_pipeline200_response import CreatePipeline200Response
+from sensorbucket.models.create_pipeline_request import CreatePipelineRequest
+from sensorbucket.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sensorbucket.nl/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = sensorbucket.Configuration(
     host = "https://sensorbucket.nl/api"
 )
 
@@ -42,16 +42,16 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = sensorbucket.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with sensorbucket.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.PipelinesApi(api_client)
-    create_pipeline_request = openapi_client.CreatePipelineRequest() # CreatePipelineRequest |  (optional)
+    api_instance = sensorbucket.PipelinesApi(api_client)
+    create_pipeline_request = sensorbucket.CreatePipelineRequest() # CreatePipelineRequest |  (optional)
 
     try:
         # Create pipeline
@@ -104,14 +104,14 @@ Disables a pipeline by setting its status to inactive.  Inactive pipelines will 
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.disable_pipeline200_response import DisablePipeline200Response
-from openapi_client.rest import ApiException
+import sensorbucket
+from sensorbucket.models.disable_pipeline200_response import DisablePipeline200Response
+from sensorbucket.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sensorbucket.nl/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = sensorbucket.Configuration(
     host = "https://sensorbucket.nl/api"
 )
 
@@ -121,15 +121,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = sensorbucket.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with sensorbucket.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.PipelinesApi(api_client)
+    api_instance = sensorbucket.PipelinesApi(api_client)
     id = 'id_example' # str | The UUID of the pipeline
 
     try:
@@ -185,14 +185,14 @@ Get the pipeline with the given identifier.  This endpoint by default returns a 
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.get_pipeline200_response import GetPipeline200Response
-from openapi_client.rest import ApiException
+import sensorbucket
+from sensorbucket.models.get_pipeline200_response import GetPipeline200Response
+from sensorbucket.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sensorbucket.nl/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = sensorbucket.Configuration(
     host = "https://sensorbucket.nl/api"
 )
 
@@ -202,15 +202,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = sensorbucket.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with sensorbucket.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.PipelinesApi(api_client)
+    api_instance = sensorbucket.PipelinesApi(api_client)
     id = 'id_example' # str | The UUID of the pipeline
     status = ['[active, inactive]'] # List[str] | The status of the pipeline. Use `inactive` to view inactive pipelines instead of getting a 404 error  (optional)
 
@@ -267,14 +267,14 @@ List pipelines. By default only `state=active` pipelines are returned. By provid
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.list_pipelines200_response import ListPipelines200Response
-from openapi_client.rest import ApiException
+import sensorbucket
+from sensorbucket.models.list_pipelines200_response import ListPipelines200Response
+from sensorbucket.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sensorbucket.nl/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = sensorbucket.Configuration(
     host = "https://sensorbucket.nl/api"
 )
 
@@ -284,15 +284,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = sensorbucket.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with sensorbucket.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.PipelinesApi(api_client)
+    api_instance = sensorbucket.PipelinesApi(api_client)
     inactive = True # bool | Only show inactive pipelines (optional)
     step = ['[thethingsnetwork, multiflexmeter]'] # List[str] | Only show pipelines that include at least one of these steps (optional)
     cursor = 'cursor_example' # str | The cursor for the current page (optional)
@@ -352,15 +352,15 @@ Update some properties of the pipeline with the given identifier.   Setting an i
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.update_pipeline200_response import UpdatePipeline200Response
-from openapi_client.models.update_pipeline_request import UpdatePipelineRequest
-from openapi_client.rest import ApiException
+import sensorbucket
+from sensorbucket.models.update_pipeline200_response import UpdatePipeline200Response
+from sensorbucket.models.update_pipeline_request import UpdatePipelineRequest
+from sensorbucket.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sensorbucket.nl/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = sensorbucket.Configuration(
     host = "https://sensorbucket.nl/api"
 )
 
@@ -370,17 +370,17 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = sensorbucket.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with sensorbucket.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.PipelinesApi(api_client)
+    api_instance = sensorbucket.PipelinesApi(api_client)
     id = 'id_example' # str | The UUID of the pipeline
-    update_pipeline_request = openapi_client.UpdatePipelineRequest() # UpdatePipelineRequest |  (optional)
+    update_pipeline_request = sensorbucket.UpdatePipelineRequest() # UpdatePipelineRequest |  (optional)
 
     try:
         # Update pipeline

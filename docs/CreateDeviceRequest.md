@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.create_device_request import CreateDeviceRequest
+from sensorbucket.models.create_device_request import CreateDeviceRequest
 
 # TODO update the JSON string below
 json = "{}"

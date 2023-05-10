@@ -21,13 +21,13 @@ import json
 
 from typing import List, Optional
 from pydantic import BaseModel, conlist
-from openapi_client.models.measurement import Measurement
+from sensorbucket.models.pipeline import Pipeline
 
-class QueryMeasurements200ResponseAllOf(BaseModel):
+class ListPipelines200ResponseAllOf(BaseModel):
     """
-    QueryMeasurements200ResponseAllOf
+    ListPipelines200ResponseAllOf
     """
-    data: Optional[conlist(Measurement)] = None
+    data: Optional[conlist(Pipeline)] = None
     __properties = ["data"]
 
     class Config:
@@ -44,8 +44,8 @@ class QueryMeasurements200ResponseAllOf(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> QueryMeasurements200ResponseAllOf:
-        """Create an instance of QueryMeasurements200ResponseAllOf from a JSON string"""
+    def from_json(cls, json_str: str) -> ListPipelines200ResponseAllOf:
+        """Create an instance of ListPipelines200ResponseAllOf from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
@@ -64,16 +64,16 @@ class QueryMeasurements200ResponseAllOf(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> QueryMeasurements200ResponseAllOf:
-        """Create an instance of QueryMeasurements200ResponseAllOf from a dict"""
+    def from_dict(cls, obj: dict) -> ListPipelines200ResponseAllOf:
+        """Create an instance of ListPipelines200ResponseAllOf from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return QueryMeasurements200ResponseAllOf.parse_obj(obj)
+            return ListPipelines200ResponseAllOf.parse_obj(obj)
 
-        _obj = QueryMeasurements200ResponseAllOf.parse_obj({
-            "data": [Measurement.from_dict(_item) for _item in obj.get("data")] if obj.get("data") is not None else None
+        _obj = ListPipelines200ResponseAllOf.parse_obj({
+            "data": [Pipeline.from_dict(_item) for _item in obj.get("data")] if obj.get("data") is not None else None
         })
         return _obj
 

@@ -1,4 +1,4 @@
-# openapi_client.MeasurementsApi
+# sensorbucket.MeasurementsApi
 
 All URIs are relative to *https://sensorbucket.nl/api*
 
@@ -21,14 +21,14 @@ List all datastreams.  A sensor can produce one or more timeseries of measuremen
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.list_datastreams200_response import ListDatastreams200Response
-from openapi_client.rest import ApiException
+import sensorbucket
+from sensorbucket.models.list_datastreams200_response import ListDatastreams200Response
+from sensorbucket.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sensorbucket.nl/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = sensorbucket.Configuration(
     host = "https://sensorbucket.nl/api"
 )
 
@@ -38,15 +38,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = sensorbucket.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with sensorbucket.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.MeasurementsApi(api_client)
+    api_instance = sensorbucket.MeasurementsApi(api_client)
     sensor = 3.4 # float | only return datastreams that are produced by the given sensor identifier (optional)
     cursor = 'cursor_example' # str | The cursor for the current page (optional)
     limit = 3.4 # float | The maximum amount of items per page. Not applicable if `cursor` parameter is given. System limits are in place.  (optional)
@@ -104,14 +104,14 @@ Query a list of measurements.  This endpoint is used to get all measurements tha
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.query_measurements200_response import QueryMeasurements200Response
-from openapi_client.rest import ApiException
+import sensorbucket
+from sensorbucket.models.query_measurements200_response import QueryMeasurements200Response
+from sensorbucket.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sensorbucket.nl/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = sensorbucket.Configuration(
     host = "https://sensorbucket.nl/api"
 )
 
@@ -121,15 +121,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = sensorbucket.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with sensorbucket.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.MeasurementsApi(api_client)
+    api_instance = sensorbucket.MeasurementsApi(api_client)
     start = '2022-01-01T00:00:00Z' # str | 
     end = '2022-12-31T23:59:59Z' # str | 
     device_id = 'device_id_example' # str |  (optional)

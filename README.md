@@ -1,4 +1,4 @@
-# openapi-client
+# sensorbucket
 SensorBucket processes data from different sources and devices into a single standardized format. 
 An applications connected to SensorBucket, can use all devices SensorBucket supports.
 
@@ -33,7 +33,7 @@ pip install git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git
 
 Then import the package:
 ```python
-import openapi_client
+import sensorbucket
 ```
 
 ### Setuptools
@@ -47,7 +47,7 @@ python setup.py install --user
 
 Then import the package:
 ```python
-import openapi_client
+import sensorbucket
 ```
 
 ### Tests
@@ -61,13 +61,13 @@ Please follow the [installation procedure](#installation--usage) and then run th
 ```python
 
 import time
-import openapi_client
-from openapi_client.rest import ApiException
+import sensorbucket
+from sensorbucket.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sensorbucket.nl/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = sensorbucket.Configuration(
     host = "https://sensorbucket.nl/api"
 )
 
@@ -77,17 +77,17 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = sensorbucket.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with sensorbucket.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.DevicesApi(api_client)
-    create_device_request = openapi_client.CreateDeviceRequest() # CreateDeviceRequest |  (optional)
+    api_instance = sensorbucket.DevicesApi(api_client)
+    create_device_request = sensorbucket.CreateDeviceRequest() # CreateDeviceRequest |  (optional)
 
     try:
         # Create device

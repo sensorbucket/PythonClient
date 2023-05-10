@@ -37,7 +37,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.measurement import Measurement
+from sensorbucket.models.measurement import Measurement
 
 # TODO update the JSON string below
 json = "{}"

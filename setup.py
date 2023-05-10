@@ -22,7 +22,7 @@ from setuptools import setup, find_packages  # noqa: H301
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 NAME = "sensorbucket"
-VERSION = "1.0.0"
+VERSION = "1.0.1"
 PYTHON_REQUIRES = ">=3.7"
 REQUIRES = [
     "urllib3 >= 1.25.3",
@@ -34,7 +34,7 @@ REQUIRES = [
 setup(
     name=NAME,
     version=VERSION,
-    description="Sensorbucket client",
+    description="Sensorbucket API",
     author="Tim van Osch",
     author_email="info@pollex.nl",
     url="https://sensorbucket.nl",

@@ -30,12 +30,12 @@ from pydantic import Field, StrictFloat, StrictInt, StrictStr
 
 from typing import Optional, Union
 
-from openapi_client.models.list_datastreams200_response import ListDatastreams200Response
-from openapi_client.models.query_measurements200_response import QueryMeasurements200Response
+from sensorbucket.models.list_datastreams200_response import ListDatastreams200Response
+from sensorbucket.models.query_measurements200_response import QueryMeasurements200Response
 
-from openapi_client.api_client import ApiClient
-from openapi_client.api_response import ApiResponse
-from openapi_client.exceptions import (  # noqa: F401
+from sensorbucket.api_client import ApiClient
+from sensorbucket.api_response import ApiResponse
+from sensorbucket.exceptions import (  # noqa: F401
     ApiTypeError,
     ApiValueError
 )

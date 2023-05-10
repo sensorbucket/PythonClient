@@ -1,4 +1,4 @@
-# openapi_client.UplinkApi
+# sensorbucket.UplinkApi
 
 All URIs are relative to *https://sensorbucket.nl/api*
 
@@ -20,13 +20,13 @@ Push an uplink message to the HTTP Importer for processing.  The request body an
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.rest import ApiException
+import sensorbucket
+from sensorbucket.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sensorbucket.nl/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = sensorbucket.Configuration(
     host = "https://sensorbucket.nl/api"
 )
 
@@ -36,15 +36,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = sensorbucket.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with sensorbucket.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.UplinkApi(api_client)
+    api_instance = sensorbucket.UplinkApi(api_client)
     pipeline_id = 'c4d4fabd-9109-40cd-88b0-be40ca1745f7' # str | The UUID of the pipeline
     body = None # object |  (optional)
 

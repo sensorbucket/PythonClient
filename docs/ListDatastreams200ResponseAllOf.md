@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.list_datastreams200_response_all_of import ListDatastreams200ResponseAllOf
+from sensorbucket.models.list_datastreams200_response_all_of import ListDatastreams200ResponseAllOf
 
 # TODO update the JSON string below
 json = "{}"

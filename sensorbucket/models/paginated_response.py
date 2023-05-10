@@ -19,17 +19,19 @@ import re  # noqa: F401
 import json
 
 
-from typing import Optional
-from pydantic import BaseModel, StrictStr
-from openapi_client.models.pipeline import Pipeline
+from typing import Any, List
+from pydantic import BaseModel, Field, StrictInt, conlist
+from sensorbucket.models.paginated_response_links import PaginatedResponseLinks
 
-class CreatePipeline200Response(BaseModel):
+class PaginatedResponse(BaseModel):
     """
-    CreatePipeline200Response
+    PaginatedResponse
     """
-    message: Optional[StrictStr] = None
-    data: Optional[Pipeline] = None
-    __properties = ["message", "data"]
+    links: PaginatedResponseLinks = Field(...)
+    page_size: StrictInt = Field(...)
+    total_count: StrictInt = Field(...)
+    data: conlist(Any) = Field(...)
+    __properties = ["links", "page_size", "total_count", "data"]
 
     class Config:
         """Pydantic configuration"""
@@ -45,8 +47,8 @@ class CreatePipeline200Response(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> CreatePipeline200Response:
-        """Create an instance of CreatePipeline200Response from a JSON string"""
+    def from_json(cls, json_str: str) -> PaginatedResponse:
+        """Create an instance of PaginatedResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
@@ -55,23 +57,25 @@ class CreatePipeline200Response(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of data
-        if self.data:
-            _dict['data'] = self.data.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of links
+        if self.links:
+            _dict['links'] = self.links.to_dict()
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> CreatePipeline200Response:
-        """Create an instance of CreatePipeline200Response from a dict"""
+    def from_dict(cls, obj: dict) -> PaginatedResponse:
+        """Create an instance of PaginatedResponse from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return CreatePipeline200Response.parse_obj(obj)
+            return PaginatedResponse.parse_obj(obj)
 
-        _obj = CreatePipeline200Response.parse_obj({
-            "message": obj.get("message"),
-            "data": Pipeline.from_dict(obj.get("data")) if obj.get("data") is not None else None
+        _obj = PaginatedResponse.parse_obj({
+            "links": PaginatedResponseLinks.from_dict(obj.get("links")) if obj.get("links") is not None else None,
+            "page_size": obj.get("page_size"),
+            "total_count": obj.get("total_count"),
+            "data": obj.get("data")
         })
         return _obj
 

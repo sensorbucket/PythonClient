@@ -1,4 +1,4 @@
-# openapi_client.DevicesApi
+# sensorbucket.DevicesApi
 
 All URIs are relative to *https://sensorbucket.nl/api*
 
@@ -27,15 +27,15 @@ Create a new device.  Depending on the type of device and the network it is regi
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.create_device201_response import CreateDevice201Response
-from openapi_client.models.create_device_request import CreateDeviceRequest
-from openapi_client.rest import ApiException
+import sensorbucket
+from sensorbucket.models.create_device201_response import CreateDevice201Response
+from sensorbucket.models.create_device_request import CreateDeviceRequest
+from sensorbucket.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sensorbucket.nl/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = sensorbucket.Configuration(
     host = "https://sensorbucket.nl/api"
 )
 
@@ -45,16 +45,16 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = sensorbucket.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with sensorbucket.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.DevicesApi(api_client)
-    create_device_request = openapi_client.CreateDeviceRequest() # CreateDeviceRequest |  (optional)
+    api_instance = sensorbucket.DevicesApi(api_client)
+    create_device_request = sensorbucket.CreateDeviceRequest() # CreateDeviceRequest |  (optional)
 
     try:
         # Create device
@@ -107,15 +107,15 @@ Create a new sensor for the device with the given identifier.  A device can not 
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.create_device_sensor201_response import CreateDeviceSensor201Response
-from openapi_client.models.create_sensor_request import CreateSensorRequest
-from openapi_client.rest import ApiException
+import sensorbucket
+from sensorbucket.models.create_device_sensor201_response import CreateDeviceSensor201Response
+from sensorbucket.models.create_sensor_request import CreateSensorRequest
+from sensorbucket.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sensorbucket.nl/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = sensorbucket.Configuration(
     host = "https://sensorbucket.nl/api"
 )
 
@@ -125,17 +125,17 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = sensorbucket.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with sensorbucket.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.DevicesApi(api_client)
+    api_instance = sensorbucket.DevicesApi(api_client)
     device_id = 3.4 # float | The identifier of the device
-    create_sensor_request = openapi_client.CreateSensorRequest() # CreateSensorRequest |  (optional)
+    create_sensor_request = sensorbucket.CreateSensorRequest() # CreateSensorRequest |  (optional)
 
     try:
         # Create sensor for device
@@ -190,14 +190,14 @@ Delete a sensor from the system.   Since a sensor can only be related to one and
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.delete_device_sensor200_response import DeleteDeviceSensor200Response
-from openapi_client.rest import ApiException
+import sensorbucket
+from sensorbucket.models.delete_device_sensor200_response import DeleteDeviceSensor200Response
+from sensorbucket.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sensorbucket.nl/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = sensorbucket.Configuration(
     host = "https://sensorbucket.nl/api"
 )
 
@@ -207,15 +207,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = sensorbucket.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with sensorbucket.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.DevicesApi(api_client)
+    api_instance = sensorbucket.DevicesApi(api_client)
     device_id = 3.4 # float | The identifier of the device
     sensor_code = 'sensor_code_example' # str | The code of the sensor
 
@@ -272,14 +272,14 @@ Get the device with the given identifier.  The returned device will also include
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.get_device200_response import GetDevice200Response
-from openapi_client.rest import ApiException
+import sensorbucket
+from sensorbucket.models.get_device200_response import GetDevice200Response
+from sensorbucket.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sensorbucket.nl/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = sensorbucket.Configuration(
     host = "https://sensorbucket.nl/api"
 )
 
@@ -289,15 +289,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = sensorbucket.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with sensorbucket.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.DevicesApi(api_client)
+    api_instance = sensorbucket.DevicesApi(api_client)
     id = 3.4 # float | The numeric ID of the device
 
     try:
@@ -352,14 +352,14 @@ List all sensors related to the device with the provided identifier
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.list_device_sensors200_response import ListDeviceSensors200Response
-from openapi_client.rest import ApiException
+import sensorbucket
+from sensorbucket.models.list_device_sensors200_response import ListDeviceSensors200Response
+from sensorbucket.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sensorbucket.nl/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = sensorbucket.Configuration(
     host = "https://sensorbucket.nl/api"
 )
 
@@ -369,15 +369,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = sensorbucket.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with sensorbucket.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.DevicesApi(api_client)
+    api_instance = sensorbucket.DevicesApi(api_client)
     device_id = 3.4 # float | The identifier of the device
     cursor = 'cursor_example' # str | The cursor for the current page (optional)
     limit = 3.4 # float | The maximum amount of items per page. Not applicable if `cursor` parameter is given. System limits are in place.  (optional)
@@ -436,14 +436,14 @@ Fetch a list of devices.  Devices can be filtered on three items: properties, di
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.list_devices200_response import ListDevices200Response
-from openapi_client.rest import ApiException
+import sensorbucket
+from sensorbucket.models.list_devices200_response import ListDevices200Response
+from sensorbucket.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sensorbucket.nl/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = sensorbucket.Configuration(
     host = "https://sensorbucket.nl/api"
 )
 
@@ -453,15 +453,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = sensorbucket.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with sensorbucket.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.DevicesApi(api_client)
+    api_instance = sensorbucket.DevicesApi(api_client)
     properties = '{ \"eui\": \"1122334455667788\" }' # str | Used to filter devices by its properties. This filters devices on whether their property contains the provided value. The value must be a JSON string and depending on your client should be URL Escaped (optional)
     north = 3.6175560329103202 # float | Used to filter devices within a bounding box (optional)
     west = 51.518796779610035 # float | Used to filter devices within a bounding box (optional)
@@ -533,14 +533,14 @@ List all sensors.
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.list_device_sensors200_response import ListDeviceSensors200Response
-from openapi_client.rest import ApiException
+import sensorbucket
+from sensorbucket.models.list_device_sensors200_response import ListDeviceSensors200Response
+from sensorbucket.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sensorbucket.nl/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = sensorbucket.Configuration(
     host = "https://sensorbucket.nl/api"
 )
 
@@ -550,15 +550,15 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = sensorbucket.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with sensorbucket.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.DevicesApi(api_client)
+    api_instance = sensorbucket.DevicesApi(api_client)
     cursor = 'cursor_example' # str | The cursor for the current page (optional)
     limit = 3.4 # float | The maximum amount of items per page. Not applicable if `cursor` parameter is given. System limits are in place.  (optional)
 
@@ -614,15 +614,15 @@ Update a some properties of the device with the given identifier.  The request b
 ```python
 import time
 import os
-import openapi_client
-from openapi_client.models.update_device200_response import UpdateDevice200Response
-from openapi_client.models.update_device_request import UpdateDeviceRequest
-from openapi_client.rest import ApiException
+import sensorbucket
+from sensorbucket.models.update_device200_response import UpdateDevice200Response
+from sensorbucket.models.update_device_request import UpdateDeviceRequest
+from sensorbucket.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sensorbucket.nl/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = sensorbucket.Configuration(
     host = "https://sensorbucket.nl/api"
 )
 
@@ -632,17 +632,17 @@ configuration = openapi_client.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: basicAuth
-configuration = openapi_client.Configuration(
+configuration = sensorbucket.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with sensorbucket.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.DevicesApi(api_client)
+    api_instance = sensorbucket.DevicesApi(api_client)
     id = 3.4 # float | The numeric ID of the device
-    update_device_request = openapi_client.UpdateDeviceRequest() # UpdateDeviceRequest |  (optional)
+    update_device_request = sensorbucket.UpdateDeviceRequest() # UpdateDeviceRequest |  (optional)
 
     try:
         # Update device properties

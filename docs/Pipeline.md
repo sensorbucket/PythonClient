@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.pipeline import Pipeline
+from sensorbucket.models.pipeline import Pipeline
 
 # TODO update the JSON string below
 json = "{}"

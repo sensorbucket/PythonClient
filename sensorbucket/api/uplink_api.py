@@ -31,9 +31,9 @@ from pydantic import Field, StrictStr
 from typing import Any, Dict, Optional
 
 
-from openapi_client.api_client import ApiClient
-from openapi_client.api_response import ApiResponse
-from openapi_client.exceptions import (  # noqa: F401
+from sensorbucket.api_client import ApiClient
+from sensorbucket.api_response import ApiResponse
+from sensorbucket.exceptions import (  # noqa: F401
     ApiTypeError,
     ApiValueError
 )

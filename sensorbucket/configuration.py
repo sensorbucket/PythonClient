@@ -20,7 +20,7 @@ import sys
 import urllib3
 
 import http.client as httplib
-from openapi_client.exceptions import ApiValueError
+from sensorbucket.exceptions import ApiValueError
 
 JSON_SCHEMA_VALIDATION_KEYWORDS = {
     'multipleOf', 'maximum', 'exclusiveMaximum',
@@ -66,7 +66,7 @@ class Configuration(object):
 
     Configure API client with HTTP basic authentication:
 
-conf = openapi_client.Configuration(
+conf = sensorbucket.Configuration(
     username='the-user',
     password='the-password',
 )
@@ -125,7 +125,7 @@ conf = openapi_client.Configuration(
         self.logger = {}
         """Logging Settings
         """
-        self.logger["package_logger"] = logging.getLogger("openapi_client")
+        self.logger["package_logger"] = logging.getLogger("sensorbucket")
         self.logger["urllib3_logger"] = logging.getLogger("urllib3")
         self.logger_format = '%(asctime)s %(levelname)s %(message)s'
         """Log format

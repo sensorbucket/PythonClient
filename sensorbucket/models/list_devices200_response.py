@@ -21,17 +21,17 @@ import json
 
 from typing import List
 from pydantic import BaseModel, Field, StrictInt, conlist
-from openapi_client.models.datastream import Datastream
-from openapi_client.models.paginated_response_links import PaginatedResponseLinks
+from sensorbucket.models.device import Device
+from sensorbucket.models.paginated_response_links import PaginatedResponseLinks
 
-class ListDatastreams200Response(BaseModel):
+class ListDevices200Response(BaseModel):
     """
-    ListDatastreams200Response
+    ListDevices200Response
     """
     links: PaginatedResponseLinks = Field(...)
     page_size: StrictInt = Field(...)
     total_count: StrictInt = Field(...)
-    data: conlist(Datastream) = Field(...)
+    data: conlist(Device) = Field(...)
     __properties = ["links", "page_size", "total_count", "data"]
 
     class Config:
@@ -48,8 +48,8 @@ class ListDatastreams200Response(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> ListDatastreams200Response:
-        """Create an instance of ListDatastreams200Response from a JSON string"""
+    def from_json(cls, json_str: str) -> ListDevices200Response:
+        """Create an instance of ListDevices200Response from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
@@ -71,19 +71,19 @@ class ListDatastreams200Response(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> ListDatastreams200Response:
-        """Create an instance of ListDatastreams200Response from a dict"""
+    def from_dict(cls, obj: dict) -> ListDevices200Response:
+        """Create an instance of ListDevices200Response from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return ListDatastreams200Response.parse_obj(obj)
+            return ListDevices200Response.parse_obj(obj)
 
-        _obj = ListDatastreams200Response.parse_obj({
+        _obj = ListDevices200Response.parse_obj({
             "links": PaginatedResponseLinks.from_dict(obj.get("links")) if obj.get("links") is not None else None,
             "page_size": obj.get("page_size"),
             "total_count": obj.get("total_count"),
-            "data": [Datastream.from_dict(_item) for _item in obj.get("data")] if obj.get("data") is not None else None
+            "data": [Device.from_dict(_item) for _item in obj.get("data")] if obj.get("data") is not None else None
         })
         return _obj
 

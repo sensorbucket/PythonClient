@@ -19,16 +19,17 @@ import re  # noqa: F401
 import json
 
 
-from typing import List, Optional
-from pydantic import BaseModel, conlist
-from openapi_client.models.pipeline import Pipeline
+from typing import Optional
+from pydantic import BaseModel, StrictStr
+from sensorbucket.models.pipeline import Pipeline
 
-class ListPipelines200ResponseAllOf(BaseModel):
+class CreatePipeline200Response(BaseModel):
     """
-    ListPipelines200ResponseAllOf
+    CreatePipeline200Response
     """
-    data: Optional[conlist(Pipeline)] = None
-    __properties = ["data"]
+    message: Optional[StrictStr] = None
+    data: Optional[Pipeline] = None
+    __properties = ["message", "data"]
 
     class Config:
         """Pydantic configuration"""
@@ -44,8 +45,8 @@ class ListPipelines200ResponseAllOf(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> ListPipelines200ResponseAllOf:
-        """Create an instance of ListPipelines200ResponseAllOf from a JSON string"""
+    def from_json(cls, json_str: str) -> CreatePipeline200Response:
+        """Create an instance of CreatePipeline200Response from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
@@ -54,26 +55,23 @@ class ListPipelines200ResponseAllOf(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of each item in data (list)
-        _items = []
+        # override the default output from pydantic by calling `to_dict()` of data
         if self.data:
-            for _item in self.data:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['data'] = _items
+            _dict['data'] = self.data.to_dict()
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> ListPipelines200ResponseAllOf:
-        """Create an instance of ListPipelines200ResponseAllOf from a dict"""
+    def from_dict(cls, obj: dict) -> CreatePipeline200Response:
+        """Create an instance of CreatePipeline200Response from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return ListPipelines200ResponseAllOf.parse_obj(obj)
+            return CreatePipeline200Response.parse_obj(obj)
 
-        _obj = ListPipelines200ResponseAllOf.parse_obj({
-            "data": [Pipeline.from_dict(_item) for _item in obj.get("data")] if obj.get("data") is not None else None
+        _obj = CreatePipeline200Response.parse_obj({
+            "message": obj.get("message"),
+            "data": Pipeline.from_dict(obj.get("data")) if obj.get("data") is not None else None
         })
         return _obj
 

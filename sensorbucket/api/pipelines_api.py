@@ -30,17 +30,17 @@ from pydantic import Field, StrictBool, StrictFloat, StrictInt, StrictStr, conli
 
 from typing import Optional, Union
 
-from openapi_client.models.create_pipeline200_response import CreatePipeline200Response
-from openapi_client.models.create_pipeline_request import CreatePipelineRequest
-from openapi_client.models.disable_pipeline200_response import DisablePipeline200Response
-from openapi_client.models.get_pipeline200_response import GetPipeline200Response
-from openapi_client.models.list_pipelines200_response import ListPipelines200Response
-from openapi_client.models.update_pipeline200_response import UpdatePipeline200Response
-from openapi_client.models.update_pipeline_request import UpdatePipelineRequest
+from sensorbucket.models.create_pipeline200_response import CreatePipeline200Response
+from sensorbucket.models.create_pipeline_request import CreatePipelineRequest
+from sensorbucket.models.disable_pipeline200_response import DisablePipeline200Response
+from sensorbucket.models.get_pipeline200_response import GetPipeline200Response
+from sensorbucket.models.list_pipelines200_response import ListPipelines200Response
+from sensorbucket.models.update_pipeline200_response import UpdatePipeline200Response
+from sensorbucket.models.update_pipeline_request import UpdatePipelineRequest
 
-from openapi_client.api_client import ApiClient
-from openapi_client.api_response import ApiResponse
-from openapi_client.exceptions import (  # noqa: F401
+from sensorbucket.api_client import ApiClient
+from sensorbucket.api_response import ApiResponse
+from sensorbucket.exceptions import (  # noqa: F401
     ApiTypeError,
     ApiValueError
 )

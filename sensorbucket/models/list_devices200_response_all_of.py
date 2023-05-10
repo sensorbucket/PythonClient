@@ -21,7 +21,7 @@ import json
 
 from typing import List, Optional
 from pydantic import BaseModel, conlist
-from openapi_client.models.device import Device
+from sensorbucket.models.device import Device
 
 class ListDevices200ResponseAllOf(BaseModel):
     """

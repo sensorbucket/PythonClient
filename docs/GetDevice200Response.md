@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.get_device200_response import GetDevice200Response
+from sensorbucket.models.get_device200_response import GetDevice200Response
 
 # TODO update the JSON string below
 json = "{}"

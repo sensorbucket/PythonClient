@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.paginated_response_links import PaginatedResponseLinks
+from sensorbucket.models.paginated_response_links import PaginatedResponseLinks
 
 # TODO update the JSON string below
 json = "{}"

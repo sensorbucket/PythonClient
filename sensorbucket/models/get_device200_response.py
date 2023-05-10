@@ -21,11 +21,11 @@ import json
 
 from typing import Optional
 from pydantic import BaseModel, StrictStr
-from openapi_client.models.device import Device
+from sensorbucket.models.device import Device
 
-class CreateDevice201Response(BaseModel):
+class GetDevice200Response(BaseModel):
     """
-    CreateDevice201Response
+    GetDevice200Response
     """
     message: Optional[StrictStr] = None
     data: Optional[Device] = None
@@ -45,8 +45,8 @@ class CreateDevice201Response(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> CreateDevice201Response:
-        """Create an instance of CreateDevice201Response from a JSON string"""
+    def from_json(cls, json_str: str) -> GetDevice200Response:
+        """Create an instance of GetDevice200Response from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
@@ -61,15 +61,15 @@ class CreateDevice201Response(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> CreateDevice201Response:
-        """Create an instance of CreateDevice201Response from a dict"""
+    def from_dict(cls, obj: dict) -> GetDevice200Response:
+        """Create an instance of GetDevice200Response from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return CreateDevice201Response.parse_obj(obj)
+            return GetDevice200Response.parse_obj(obj)
 
-        _obj = CreateDevice201Response.parse_obj({
+        _obj = GetDevice200Response.parse_obj({
             "message": obj.get("message"),
             "data": Device.from_dict(obj.get("data")) if obj.get("data") is not None else None
         })

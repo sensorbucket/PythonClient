@@ -30,20 +30,20 @@ from pydantic import Field, StrictFloat, StrictInt, StrictStr
 
 from typing import Optional, Union
 
-from openapi_client.models.create_device201_response import CreateDevice201Response
-from openapi_client.models.create_device_request import CreateDeviceRequest
-from openapi_client.models.create_device_sensor201_response import CreateDeviceSensor201Response
-from openapi_client.models.create_sensor_request import CreateSensorRequest
-from openapi_client.models.delete_device_sensor200_response import DeleteDeviceSensor200Response
-from openapi_client.models.get_device200_response import GetDevice200Response
-from openapi_client.models.list_device_sensors200_response import ListDeviceSensors200Response
-from openapi_client.models.list_devices200_response import ListDevices200Response
-from openapi_client.models.update_device200_response import UpdateDevice200Response
-from openapi_client.models.update_device_request import UpdateDeviceRequest
+from sensorbucket.models.create_device201_response import CreateDevice201Response
+from sensorbucket.models.create_device_request import CreateDeviceRequest
+from sensorbucket.models.create_device_sensor201_response import CreateDeviceSensor201Response
+from sensorbucket.models.create_sensor_request import CreateSensorRequest
+from sensorbucket.models.delete_device_sensor200_response import DeleteDeviceSensor200Response
+from sensorbucket.models.get_device200_response import GetDevice200Response
+from sensorbucket.models.list_device_sensors200_response import ListDeviceSensors200Response
+from sensorbucket.models.list_devices200_response import ListDevices200Response
+from sensorbucket.models.update_device200_response import UpdateDevice200Response
+from sensorbucket.models.update_device_request import UpdateDeviceRequest
 
-from openapi_client.api_client import ApiClient
-from openapi_client.api_response import ApiResponse
-from openapi_client.exceptions import (  # noqa: F401
+from sensorbucket.api_client import ApiClient
+from sensorbucket.api_response import ApiResponse
+from sensorbucket.exceptions import (  # noqa: F401
     ApiTypeError,
     ApiValueError
 )

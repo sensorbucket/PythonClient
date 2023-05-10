@@ -19,17 +19,20 @@ import re  # noqa: F401
 import json
 
 
-from typing import Optional
-from pydantic import BaseModel, StrictStr
-from openapi_client.models.pipeline import Pipeline
+from typing import List
+from pydantic import BaseModel, Field, StrictInt, conlist
+from sensorbucket.models.datastream import Datastream
+from sensorbucket.models.paginated_response_links import PaginatedResponseLinks
 
-class UpdatePipeline200Response(BaseModel):
+class ListDatastreams200Response(BaseModel):
     """
-    UpdatePipeline200Response
+    ListDatastreams200Response
     """
-    message: Optional[StrictStr] = None
-    data: Optional[Pipeline] = None
-    __properties = ["message", "data"]
+    links: PaginatedResponseLinks = Field(...)
+    page_size: StrictInt = Field(...)
+    total_count: StrictInt = Field(...)
+    data: conlist(Datastream) = Field(...)
+    __properties = ["links", "page_size", "total_count", "data"]
 
     class Config:
         """Pydantic configuration"""
@@ -45,8 +48,8 @@ class UpdatePipeline200Response(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> UpdatePipeline200Response:
-        """Create an instance of UpdatePipeline200Response from a JSON string"""
+    def from_json(cls, json_str: str) -> ListDatastreams200Response:
+        """Create an instance of ListDatastreams200Response from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
@@ -55,23 +58,32 @@ class UpdatePipeline200Response(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of data
+        # override the default output from pydantic by calling `to_dict()` of links
+        if self.links:
+            _dict['links'] = self.links.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in data (list)
+        _items = []
         if self.data:
-            _dict['data'] = self.data.to_dict()
+            for _item in self.data:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['data'] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> UpdatePipeline200Response:
-        """Create an instance of UpdatePipeline200Response from a dict"""
+    def from_dict(cls, obj: dict) -> ListDatastreams200Response:
+        """Create an instance of ListDatastreams200Response from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return UpdatePipeline200Response.parse_obj(obj)
+            return ListDatastreams200Response.parse_obj(obj)
 
-        _obj = UpdatePipeline200Response.parse_obj({
-            "message": obj.get("message"),
-            "data": Pipeline.from_dict(obj.get("data")) if obj.get("data") is not None else None
+        _obj = ListDatastreams200Response.parse_obj({
+            "links": PaginatedResponseLinks.from_dict(obj.get("links")) if obj.get("links") is not None else None,
+            "page_size": obj.get("page_size"),
+            "total_count": obj.get("total_count"),
+            "data": [Datastream.from_dict(_item) for _item in obj.get("data")] if obj.get("data") is not None else None
         })
         return _obj
 

@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.datastream import Datastream
+from sensorbucket.models.datastream import Datastream
 
 # TODO update the JSON string below
 json = "{}"
