@@ -17,9 +17,8 @@ Push an uplink message to the HTTP Importer for processing.  The request body an
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-import time
-import os
 import sensorbucket
 from sensorbucket.rest import ApiException
 from pprint import pprint
@@ -56,7 +55,9 @@ with sensorbucket.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -77,6 +78,7 @@ void (empty response body)
  - **Accept**: Not defined
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Accepted uplink |  -  |

@@ -21,9 +21,8 @@ Create a new pipeline.   A pipeline determines which workers, in which order the
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-import time
-import os
 import sensorbucket
 from sensorbucket.models.create_pipeline200_response import CreatePipeline200Response
 from sensorbucket.models.create_pipeline_request import CreatePipelineRequest
@@ -63,7 +62,9 @@ with sensorbucket.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -83,6 +84,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Created pipeline |  -  |
@@ -101,9 +103,8 @@ Disables a pipeline by setting its status to inactive.  Inactive pipelines will 
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-import time
-import os
 import sensorbucket
 from sensorbucket.models.disable_pipeline200_response import DisablePipeline200Response
 from sensorbucket.rest import ApiException
@@ -142,7 +143,9 @@ with sensorbucket.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -162,6 +165,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | pipeline disabled |  -  |
@@ -182,9 +186,8 @@ Get the pipeline with the given identifier.  This endpoint by default returns a 
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-import time
-import os
 import sensorbucket
 from sensorbucket.models.get_pipeline200_response import GetPipeline200Response
 from sensorbucket.rest import ApiException
@@ -224,7 +227,9 @@ with sensorbucket.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -245,6 +250,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Fetched pipeline |  -  |
@@ -264,9 +270,8 @@ List pipelines. By default only `state=active` pipelines are returned. By provid
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-import time
-import os
 import sensorbucket
 from sensorbucket.models.list_pipelines200_response import ListPipelines200Response
 from sensorbucket.rest import ApiException
@@ -296,7 +301,7 @@ with sensorbucket.ApiClient(configuration) as api_client:
     inactive = True # bool | Only show inactive pipelines (optional)
     step = ['[thethingsnetwork, multiflexmeter]'] # List[str] | Only show pipelines that include at least one of these steps (optional)
     cursor = 'cursor_example' # str | The cursor for the current page (optional)
-    limit = 3.4 # float | The maximum amount of items per page. Not applicable if `cursor` parameter is given. System limits are in place.  (optional)
+    limit = 56 # int | The maximum amount of items per page. Not applicable if `cursor` parameter is given. System limits are in place.  (optional)
 
     try:
         # List pipelines
@@ -308,14 +313,16 @@ with sensorbucket.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **inactive** | **bool**| Only show inactive pipelines | [optional] 
  **step** | [**List[str]**](str.md)| Only show pipelines that include at least one of these steps | [optional] 
  **cursor** | **str**| The cursor for the current page | [optional] 
- **limit** | **float**| The maximum amount of items per page. Not applicable if &#x60;cursor&#x60; parameter is given. System limits are in place.  | [optional] 
+ **limit** | **int**| The maximum amount of items per page. Not applicable if &#x60;cursor&#x60; parameter is given. System limits are in place.  | [optional] 
 
 ### Return type
 
@@ -331,6 +338,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Fetched pipelines |  -  |
@@ -349,9 +357,8 @@ Update some properties of the pipeline with the given identifier.   Setting an i
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-import time
-import os
 import sensorbucket
 from sensorbucket.models.update_pipeline200_response import UpdatePipeline200Response
 from sensorbucket.models.update_pipeline_request import UpdatePipelineRequest
@@ -392,7 +399,9 @@ with sensorbucket.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -413,6 +422,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Updated pipeline |  -  |

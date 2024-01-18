@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **code** | **str** |  | 
@@ -9,7 +10,7 @@ Name | Type | Description | Notes
 **external_id** | **str** |  | 
 **brand** | **str** |  | [optional] 
 **properties** | **object** |  | [optional] 
-**archive_time** | **float** |  | [optional] 
+**archive_time** | **int** |  | [optional] 
 
 ## Example
 

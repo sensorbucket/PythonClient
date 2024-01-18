@@ -2,14 +2,15 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [optional] 
-**description** | **str** |  | [optional] 
-**steps** | **List[str]** |  | [optional] 
-**status** | **str** |  | [optional] 
-**last_status_change** | **str** |  | [optional] 
-**created_at** | **str** |  | [optional] 
+**id** | **str** |  | 
+**description** | **str** |  | 
+**steps** | **List[str]** |  | 
+**status** | **str** | either active or inactive | 
+**last_status_change** | **datetime** |  | 
+**created_at** | **datetime** |  | [optional] 
 
 ## Example
 

@@ -2,17 +2,21 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **float** |  | [optional] 
-**code** | **str** |  | [optional] 
-**description** | **str** |  | [optional] 
-**organisation** | **str** |  | [optional] 
-**properties** | **object** |  | [optional] 
+**id** | **int** |  | 
+**code** | **str** |  | 
+**state** | **int** |  | 
+**description** | **str** |  | 
+**organisation** | **str** |  | 
+**properties** | **object** |  | 
+**altitude** | **float** |  | [optional] 
 **latitude** | **float** |  | [optional] 
 **longitude** | **float** |  | [optional] 
 **location_description** | **str** |  | [optional] 
-**sensors** | [**List[Sensor]**](Sensor.md) |  | [optional] 
+**sensors** | [**List[Sensor]**](Sensor.md) |  | 
+**created_at** | **datetime** |  | 
 
 ## Example
 

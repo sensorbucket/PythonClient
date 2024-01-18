@@ -2,10 +2,11 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **uplink_message_id** | **str** |  | 
-**device_id** | **float** |  | 
+**device_id** | **int** |  | 
 **device_code** | **str** |  | 
 **device_description** | **str** |  | [optional] 
 **device_latitude** | **float** |  | [optional] 
@@ -13,26 +14,26 @@ Name | Type | Description | Notes
 **device_altitude** | **float** |  | [optional] 
 **device_location_description** | **str** |  | [optional] 
 **device_properties** | **object** |  | [optional] 
-**device_state** | **float** |  | 
-**sensor_id** | **float** |  | 
+**device_state** | **int** |  | 
+**sensor_id** | **int** |  | 
 **sensor_code** | **str** |  | 
 **sensor_description** | **str** |  | [optional] 
 **sensor_external_id** | **str** |  | 
 **sensor_properties** | **object** |  | [optional] 
 **sensor_brand** | **str** |  | [optional] 
-**sensor_archive_time** | **float** |  | [optional] 
+**sensor_archive_time** | **int** |  | [optional] 
 **datastream_id** | **str** |  | 
 **datastream_description** | **str** |  | [optional] 
 **datastream_observed_property** | **str** |  | 
 **datastream_unit_of_measurement** | **str** |  | 
-**measurement_timestamp** | **str** |  | 
+**measurement_timestamp** | **datetime** |  | 
 **measurement_value** | **float** |  | 
 **measurement_latitude** | **float** |  | [optional] 
 **measurement_longitude** | **float** |  | [optional] 
 **measurement_altitude** | **float** |  | [optional] 
 **measurement_properties** | **object** |  | [optional] 
-**measurement_expiration** | **str** |  | 
-**created_at** | **str** |  | [optional] 
+**measurement_expiration** | **datetime** |  | 
+**created_at** | **datetime** |  | [optional] 
 
 ## Example
 

@@ -2,16 +2,18 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **float** |  | [optional] 
-**code** | **str** |  | [optional] 
-**description** | **str** |  | [optional] 
-**external_id** | **str** |  | [optional] 
-**brand** | **str** |  | [optional] 
-**archive_time** | **float** |  | [optional] 
-**properties** | **object** |  | [optional] 
-**created_at** | **str** |  | [optional] 
+**id** | **int** |  | 
+**device_id** | **int** |  | 
+**code** | **str** |  | 
+**description** | **str** |  | 
+**external_id** | **str** |  | 
+**brand** | **str** |  | 
+**archive_time** | **int** |  | [optional] 
+**properties** | **object** |  | 
+**created_at** | **datetime** |  | 
 
 ## Example
 

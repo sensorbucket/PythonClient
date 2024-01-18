@@ -2,14 +2,15 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | [optional] 
-**description** | **str** |  | [optional] 
-**sensor_id** | **float** |  | [optional] 
-**observed_property** | **str** |  | [optional] 
-**unit_of_measurement** | **str** |  | [optional] 
-**created_at** | **str** |  | [optional] 
+**id** | **str** |  | 
+**description** | **str** |  | 
+**sensor_id** | **int** |  | 
+**observed_property** | **str** |  | 
+**unit_of_measurement** | **str** |  | 
+**created_at** | **str** |  | 
 
 ## Example
 

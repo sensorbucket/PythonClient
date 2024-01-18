@@ -2,9 +2,10 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**description** | **float** |  | [optional] 
+**description** | **int** |  | [optional] 
 **latitude** | **float** |  | [optional] 
 **longitude** | **float** |  | [optional] 
 **location_description** | **str** |  | [optional] 

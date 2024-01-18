@@ -4,15 +4,107 @@ All URIs are relative to *https://sensorbucket.nl/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**add_sensor_to_sensor_group**](DevicesApi.md#add_sensor_to_sensor_group) | **POST** /sensor-groups/{id}/sensors | Add sensor to a sensor group
 [**create_device**](DevicesApi.md#create_device) | **POST** /devices | Create device
 [**create_device_sensor**](DevicesApi.md#create_device_sensor) | **POST** /devices/{device_id}/sensors | Create sensor for device
+[**create_sensor_group**](DevicesApi.md#create_sensor_group) | **POST** /sensor-groups | Create sensor group
 [**delete_device_sensor**](DevicesApi.md#delete_device_sensor) | **DELETE** /device/{device_id}/sensors/{sensor_code} | Delete sensor
+[**delete_sensor_from_sensor_group**](DevicesApi.md#delete_sensor_from_sensor_group) | **DELETE** /sensor-groups/{id}/sensors/{sensor_id} | Delete sensor from sensor group
+[**delete_sensor_group**](DevicesApi.md#delete_sensor_group) | **DELETE** /sensor-groups/{id} | Delete sensor group
 [**get_device**](DevicesApi.md#get_device) | **GET** /devices/{id} | Get device
+[**get_sensor_group**](DevicesApi.md#get_sensor_group) | **GET** /sensor-groups/{id} | Get sensor group
 [**list_device_sensors**](DevicesApi.md#list_device_sensors) | **GET** /devices/{device_id}/sensors | List sensors device
 [**list_devices**](DevicesApi.md#list_devices) | **GET** /devices | List devices
+[**list_sensor_groups**](DevicesApi.md#list_sensor_groups) | **GET** /sensor-groups | List sensor groups
 [**list_sensors**](DevicesApi.md#list_sensors) | **GET** /sensors | List sensors
 [**update_device**](DevicesApi.md#update_device) | **PATCH** /devices/{id} | Update device properties
+[**update_sensor_group**](DevicesApi.md#update_sensor_group) | **PATCH** /sensor-groups/{id} | Update sensor group
 
+
+# **add_sensor_to_sensor_group**
+> AddSensorToSensorGroup201Response add_sensor_to_sensor_group(id, add_sensor_to_sensor_group_request=add_sensor_to_sensor_group_request)
+
+Add sensor to a sensor group
+
+Add a sensor by its ID to a sensor group by its ID 
+
+### Example
+
+* Basic Authentication (basicAuth):
+
+```python
+import sensorbucket
+from sensorbucket.models.add_sensor_to_sensor_group201_response import AddSensorToSensorGroup201Response
+from sensorbucket.models.add_sensor_to_sensor_group_request import AddSensorToSensorGroupRequest
+from sensorbucket.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sensorbucket.nl/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = sensorbucket.Configuration(
+    host = "https://sensorbucket.nl/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: basicAuth
+configuration = sensorbucket.Configuration(
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
+)
+
+# Enter a context with an instance of the API client
+with sensorbucket.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = sensorbucket.DevicesApi(api_client)
+    id = 56 # int | The identifier of the Sensor Group
+    add_sensor_to_sensor_group_request = sensorbucket.AddSensorToSensorGroupRequest() # AddSensorToSensorGroupRequest |  (optional)
+
+    try:
+        # Add sensor to a sensor group
+        api_response = api_instance.add_sensor_to_sensor_group(id, add_sensor_to_sensor_group_request=add_sensor_to_sensor_group_request)
+        print("The response of DevicesApi->add_sensor_to_sensor_group:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DevicesApi->add_sensor_to_sensor_group: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| The identifier of the Sensor Group | 
+ **add_sensor_to_sensor_group_request** | [**AddSensorToSensorGroupRequest**](AddSensorToSensorGroupRequest.md)|  | [optional] 
+
+### Return type
+
+[**AddSensorToSensorGroup201Response**](AddSensorToSensorGroup201Response.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Added sensor to sensor group |  -  |
+**401** | The request failed because the provided credentials are invalid or missing |  -  |
+**403** | The request failed because the provided credentials do not have the required permissions to perform this action |  -  |
+**404** | The request failed because the requested resource could not be found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_device**
 > CreateDevice201Response create_device(create_device_request=create_device_request)
@@ -24,9 +116,8 @@ Create a new device.  Depending on the type of device and the network it is regi
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-import time
-import os
 import sensorbucket
 from sensorbucket.models.create_device201_response import CreateDevice201Response
 from sensorbucket.models.create_device_request import CreateDeviceRequest
@@ -66,7 +157,9 @@ with sensorbucket.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -86,6 +179,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -104,9 +198,8 @@ Create a new sensor for the device with the given identifier.  A device can not 
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-import time
-import os
 import sensorbucket
 from sensorbucket.models.create_device_sensor201_response import CreateDeviceSensor201Response
 from sensorbucket.models.create_sensor_request import CreateSensorRequest
@@ -134,7 +227,7 @@ configuration = sensorbucket.Configuration(
 with sensorbucket.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sensorbucket.DevicesApi(api_client)
-    device_id = 3.4 # float | The identifier of the device
+    device_id = 56 # int | The identifier of the device
     create_sensor_request = sensorbucket.CreateSensorRequest() # CreateSensorRequest |  (optional)
 
     try:
@@ -147,11 +240,13 @@ with sensorbucket.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **device_id** | **float**| The identifier of the device | 
+ **device_id** | **int**| The identifier of the device | 
  **create_sensor_request** | [**CreateSensorRequest**](CreateSensorRequest.md)|  | [optional] 
 
 ### Return type
@@ -168,12 +263,95 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created new sensor for device |  -  |
 **401** | The request failed because the provided credentials are invalid or missing |  -  |
 **403** | The request failed because the provided credentials do not have the required permissions to perform this action |  -  |
 **404** | The request failed because the requested resource could not be found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_sensor_group**
+> CreateSensorGroup201Response create_sensor_group(create_sensor_group_request=create_sensor_group_request)
+
+Create sensor group
+
+Create a new sensor group. 
+
+### Example
+
+* Basic Authentication (basicAuth):
+
+```python
+import sensorbucket
+from sensorbucket.models.create_sensor_group201_response import CreateSensorGroup201Response
+from sensorbucket.models.create_sensor_group_request import CreateSensorGroupRequest
+from sensorbucket.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sensorbucket.nl/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = sensorbucket.Configuration(
+    host = "https://sensorbucket.nl/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: basicAuth
+configuration = sensorbucket.Configuration(
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
+)
+
+# Enter a context with an instance of the API client
+with sensorbucket.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = sensorbucket.DevicesApi(api_client)
+    create_sensor_group_request = sensorbucket.CreateSensorGroupRequest() # CreateSensorGroupRequest |  (optional)
+
+    try:
+        # Create sensor group
+        api_response = api_instance.create_sensor_group(create_sensor_group_request=create_sensor_group_request)
+        print("The response of DevicesApi->create_sensor_group:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DevicesApi->create_sensor_group: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_sensor_group_request** | [**CreateSensorGroupRequest**](CreateSensorGroupRequest.md)|  | [optional] 
+
+### Return type
+
+[**CreateSensorGroup201Response**](CreateSensorGroup201Response.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**401** | The request failed because the provided credentials are invalid or missing |  -  |
+**403** | The request failed because the provided credentials do not have the required permissions to perform this action |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -187,9 +365,8 @@ Delete a sensor from the system.   Since a sensor can only be related to one and
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-import time
-import os
 import sensorbucket
 from sensorbucket.models.delete_device_sensor200_response import DeleteDeviceSensor200Response
 from sensorbucket.rest import ApiException
@@ -216,7 +393,7 @@ configuration = sensorbucket.Configuration(
 with sensorbucket.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sensorbucket.DevicesApi(api_client)
-    device_id = 3.4 # float | The identifier of the device
+    device_id = 56 # int | The identifier of the device
     sensor_code = 'sensor_code_example' # str | The code of the sensor
 
     try:
@@ -229,11 +406,13 @@ with sensorbucket.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **device_id** | **float**| The identifier of the device | 
+ **device_id** | **int**| The identifier of the device | 
  **sensor_code** | **str**| The code of the sensor | 
 
 ### Return type
@@ -250,9 +429,176 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Deleted sensor from device |  -  |
+**401** | The request failed because the provided credentials are invalid or missing |  -  |
+**403** | The request failed because the provided credentials do not have the required permissions to perform this action |  -  |
+**404** | The request failed because the requested resource could not be found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_sensor_from_sensor_group**
+> DeleteSensorFromSensorGroup200Response delete_sensor_from_sensor_group(id, sensor_id)
+
+Delete sensor from sensor group
+
+Delete a sensor from a sensor group 
+
+### Example
+
+* Basic Authentication (basicAuth):
+
+```python
+import sensorbucket
+from sensorbucket.models.delete_sensor_from_sensor_group200_response import DeleteSensorFromSensorGroup200Response
+from sensorbucket.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sensorbucket.nl/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = sensorbucket.Configuration(
+    host = "https://sensorbucket.nl/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: basicAuth
+configuration = sensorbucket.Configuration(
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
+)
+
+# Enter a context with an instance of the API client
+with sensorbucket.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = sensorbucket.DevicesApi(api_client)
+    id = 56 # int | The identifier of the sensor group
+    sensor_id = 56 # int | The id of the sensor
+
+    try:
+        # Delete sensor from sensor group
+        api_response = api_instance.delete_sensor_from_sensor_group(id, sensor_id)
+        print("The response of DevicesApi->delete_sensor_from_sensor_group:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DevicesApi->delete_sensor_from_sensor_group: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| The identifier of the sensor group | 
+ **sensor_id** | **int**| The id of the sensor | 
+
+### Return type
+
+[**DeleteSensorFromSensorGroup200Response**](DeleteSensorFromSensorGroup200Response.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Deleted sensor from sensor group |  -  |
+**401** | The request failed because the provided credentials are invalid or missing |  -  |
+**403** | The request failed because the provided credentials do not have the required permissions to perform this action |  -  |
+**404** | The request failed because the requested resource could not be found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_sensor_group**
+> DeleteSensorGroup200Response delete_sensor_group(id)
+
+Delete sensor group
+
+Delete a sensor group 
+
+### Example
+
+* Basic Authentication (basicAuth):
+
+```python
+import sensorbucket
+from sensorbucket.models.delete_sensor_group200_response import DeleteSensorGroup200Response
+from sensorbucket.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sensorbucket.nl/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = sensorbucket.Configuration(
+    host = "https://sensorbucket.nl/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: basicAuth
+configuration = sensorbucket.Configuration(
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
+)
+
+# Enter a context with an instance of the API client
+with sensorbucket.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = sensorbucket.DevicesApi(api_client)
+    id = 56 # int | The id of the sensor group
+
+    try:
+        # Delete sensor group
+        api_response = api_instance.delete_sensor_group(id)
+        print("The response of DevicesApi->delete_sensor_group:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DevicesApi->delete_sensor_group: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| The id of the sensor group | 
+
+### Return type
+
+[**DeleteSensorGroup200Response**](DeleteSensorGroup200Response.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Sensor group deleted |  -  |
 **401** | The request failed because the provided credentials are invalid or missing |  -  |
 **403** | The request failed because the provided credentials do not have the required permissions to perform this action |  -  |
 **404** | The request failed because the requested resource could not be found |  -  |
@@ -269,9 +615,8 @@ Get the device with the given identifier.  The returned device will also include
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-import time
-import os
 import sensorbucket
 from sensorbucket.models.get_device200_response import GetDevice200Response
 from sensorbucket.rest import ApiException
@@ -298,7 +643,7 @@ configuration = sensorbucket.Configuration(
 with sensorbucket.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sensorbucket.DevicesApi(api_client)
-    id = 3.4 # float | The numeric ID of the device
+    id = 56 # int | The numeric ID of the device
 
     try:
         # Get device
@@ -310,11 +655,13 @@ with sensorbucket.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **float**| The numeric ID of the device | 
+ **id** | **int**| The numeric ID of the device | 
 
 ### Return type
 
@@ -330,9 +677,92 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Fetched device |  -  |
+**401** | The request failed because the provided credentials are invalid or missing |  -  |
+**403** | The request failed because the provided credentials do not have the required permissions to perform this action |  -  |
+**404** | The request failed because the requested resource could not be found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_sensor_group**
+> GetSensorGroup200Response get_sensor_group(id)
+
+Get sensor group
+
+Get the sensor group with the given identifier. 
+
+### Example
+
+* Basic Authentication (basicAuth):
+
+```python
+import sensorbucket
+from sensorbucket.models.get_sensor_group200_response import GetSensorGroup200Response
+from sensorbucket.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sensorbucket.nl/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = sensorbucket.Configuration(
+    host = "https://sensorbucket.nl/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: basicAuth
+configuration = sensorbucket.Configuration(
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
+)
+
+# Enter a context with an instance of the API client
+with sensorbucket.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = sensorbucket.DevicesApi(api_client)
+    id = 56 # int | The numeric ID of the sensor group
+
+    try:
+        # Get sensor group
+        api_response = api_instance.get_sensor_group(id)
+        print("The response of DevicesApi->get_sensor_group:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DevicesApi->get_sensor_group: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| The numeric ID of the sensor group | 
+
+### Return type
+
+[**GetSensorGroup200Response**](GetSensorGroup200Response.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Fetched sensor group |  -  |
 **401** | The request failed because the provided credentials are invalid or missing |  -  |
 **403** | The request failed because the provided credentials do not have the required permissions to perform this action |  -  |
 **404** | The request failed because the requested resource could not be found |  -  |
@@ -349,9 +779,8 @@ List all sensors related to the device with the provided identifier
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-import time
-import os
 import sensorbucket
 from sensorbucket.models.list_device_sensors200_response import ListDeviceSensors200Response
 from sensorbucket.rest import ApiException
@@ -378,9 +807,9 @@ configuration = sensorbucket.Configuration(
 with sensorbucket.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sensorbucket.DevicesApi(api_client)
-    device_id = 3.4 # float | The identifier of the device
+    device_id = 56 # int | The identifier of the device
     cursor = 'cursor_example' # str | The cursor for the current page (optional)
-    limit = 3.4 # float | The maximum amount of items per page. Not applicable if `cursor` parameter is given. System limits are in place.  (optional)
+    limit = 56 # int | The maximum amount of items per page. Not applicable if `cursor` parameter is given. System limits are in place.  (optional)
 
     try:
         # List sensors device
@@ -392,13 +821,15 @@ with sensorbucket.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **device_id** | **float**| The identifier of the device | 
+ **device_id** | **int**| The identifier of the device | 
  **cursor** | **str**| The cursor for the current page | [optional] 
- **limit** | **float**| The maximum amount of items per page. Not applicable if &#x60;cursor&#x60; parameter is given. System limits are in place.  | [optional] 
+ **limit** | **int**| The maximum amount of items per page. Not applicable if &#x60;cursor&#x60; parameter is given. System limits are in place.  | [optional] 
 
 ### Return type
 
@@ -414,6 +845,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Listed device sensors |  -  |
@@ -424,7 +856,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_devices**
-> ListDevices200Response list_devices(properties=properties, north=north, west=west, east=east, south=south, latitude=latitude, longitude=longitude, distance=distance, cursor=cursor, limit=limit)
+> ListDevices200Response list_devices(properties=properties, north=north, west=west, east=east, south=south, latitude=latitude, longitude=longitude, distance=distance, cursor=cursor, limit=limit, id=id, sensor_group=sensor_group)
 
 List devices
 
@@ -433,9 +865,8 @@ Fetch a list of devices.  Devices can be filtered on three items: properties, di
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-import time
-import os
 import sensorbucket
 from sensorbucket.models.list_devices200_response import ListDevices200Response
 from sensorbucket.rest import ApiException
@@ -469,13 +900,15 @@ with sensorbucket.ApiClient(configuration) as api_client:
     south = 3.655955445579366 # float | Used to filter devices within a bounding box (optional)
     latitude = 51.496227862014685 # float | Used to filter devices within a distance from a point (optional)
     longitude = 3.615071953647924 # float | Used to filter devices within a distance from a point (optional)
-    distance = 1000 # float | Used to filter devices within a distance from a point.  The distance is given in meters.  (optional)
+    distance = 1000 # int | Used to filter devices within a distance from a point.  The distance is given in meters.  (optional)
     cursor = 'cursor_example' # str | The cursor for the current page (optional)
-    limit = 3.4 # float | The maximum amount of items per page. Not applicable if `cursor` parameter is given. System limits are in place.  (optional)
+    limit = 56 # int | The maximum amount of items per page. Not applicable if `cursor` parameter is given. System limits are in place.  (optional)
+    id = [56] # List[int] | Filter by Device IDs  (optional)
+    sensor_group = [56] # List[int] | Filter by device group  (optional)
 
     try:
         # List devices
-        api_response = api_instance.list_devices(properties=properties, north=north, west=west, east=east, south=south, latitude=latitude, longitude=longitude, distance=distance, cursor=cursor, limit=limit)
+        api_response = api_instance.list_devices(properties=properties, north=north, west=west, east=east, south=south, latitude=latitude, longitude=longitude, distance=distance, cursor=cursor, limit=limit, id=id, sensor_group=sensor_group)
         print("The response of DevicesApi->list_devices:\n")
         pprint(api_response)
     except Exception as e:
@@ -483,7 +916,9 @@ with sensorbucket.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -494,9 +929,11 @@ Name | Type | Description  | Notes
  **south** | **float**| Used to filter devices within a bounding box | [optional] 
  **latitude** | **float**| Used to filter devices within a distance from a point | [optional] 
  **longitude** | **float**| Used to filter devices within a distance from a point | [optional] 
- **distance** | **float**| Used to filter devices within a distance from a point.  The distance is given in meters.  | [optional] 
+ **distance** | **int**| Used to filter devices within a distance from a point.  The distance is given in meters.  | [optional] 
  **cursor** | **str**| The cursor for the current page | [optional] 
- **limit** | **float**| The maximum amount of items per page. Not applicable if &#x60;cursor&#x60; parameter is given. System limits are in place.  | [optional] 
+ **limit** | **int**| The maximum amount of items per page. Not applicable if &#x60;cursor&#x60; parameter is given. System limits are in place.  | [optional] 
+ **id** | [**List[int]**](int.md)| Filter by Device IDs  | [optional] 
+ **sensor_group** | [**List[int]**](int.md)| Filter by device group  | [optional] 
 
 ### Return type
 
@@ -512,6 +949,90 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | The request failed because the provided credentials are invalid or missing |  -  |
+**403** | The request failed because the provided credentials do not have the required permissions to perform this action |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_sensor_groups**
+> ListSensorGroups200Response list_sensor_groups(cursor=cursor, limit=limit)
+
+List sensor groups
+
+Fetch a list of sensor groups. 
+
+### Example
+
+* Basic Authentication (basicAuth):
+
+```python
+import sensorbucket
+from sensorbucket.models.list_sensor_groups200_response import ListSensorGroups200Response
+from sensorbucket.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sensorbucket.nl/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = sensorbucket.Configuration(
+    host = "https://sensorbucket.nl/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: basicAuth
+configuration = sensorbucket.Configuration(
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
+)
+
+# Enter a context with an instance of the API client
+with sensorbucket.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = sensorbucket.DevicesApi(api_client)
+    cursor = 'cursor_example' # str | The cursor for the current page (optional)
+    limit = 56 # int | The maximum amount of items per page. Not applicable if `cursor` parameter is given. System limits are in place.  (optional)
+
+    try:
+        # List sensor groups
+        api_response = api_instance.list_sensor_groups(cursor=cursor, limit=limit)
+        print("The response of DevicesApi->list_sensor_groups:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DevicesApi->list_sensor_groups: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cursor** | **str**| The cursor for the current page | [optional] 
+ **limit** | **int**| The maximum amount of items per page. Not applicable if &#x60;cursor&#x60; parameter is given. System limits are in place.  | [optional] 
+
+### Return type
+
+[**ListSensorGroups200Response**](ListSensorGroups200Response.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -530,9 +1051,8 @@ List all sensors.
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-import time
-import os
 import sensorbucket
 from sensorbucket.models.list_device_sensors200_response import ListDeviceSensors200Response
 from sensorbucket.rest import ApiException
@@ -560,7 +1080,7 @@ with sensorbucket.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sensorbucket.DevicesApi(api_client)
     cursor = 'cursor_example' # str | The cursor for the current page (optional)
-    limit = 3.4 # float | The maximum amount of items per page. Not applicable if `cursor` parameter is given. System limits are in place.  (optional)
+    limit = 56 # int | The maximum amount of items per page. Not applicable if `cursor` parameter is given. System limits are in place.  (optional)
 
     try:
         # List sensors
@@ -572,12 +1092,14 @@ with sensorbucket.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cursor** | **str**| The cursor for the current page | [optional] 
- **limit** | **float**| The maximum amount of items per page. Not applicable if &#x60;cursor&#x60; parameter is given. System limits are in place.  | [optional] 
+ **limit** | **int**| The maximum amount of items per page. Not applicable if &#x60;cursor&#x60; parameter is given. System limits are in place.  | [optional] 
 
 ### Return type
 
@@ -593,6 +1115,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Fetched sensors |  -  |
@@ -611,9 +1134,8 @@ Update a some properties of the device with the given identifier.  The request b
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-import time
-import os
 import sensorbucket
 from sensorbucket.models.update_device200_response import UpdateDevice200Response
 from sensorbucket.models.update_device_request import UpdateDeviceRequest
@@ -641,7 +1163,7 @@ configuration = sensorbucket.Configuration(
 with sensorbucket.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sensorbucket.DevicesApi(api_client)
-    id = 3.4 # float | The numeric ID of the device
+    id = 56 # int | The numeric ID of the device
     update_device_request = sensorbucket.UpdateDeviceRequest() # UpdateDeviceRequest |  (optional)
 
     try:
@@ -654,11 +1176,13 @@ with sensorbucket.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **float**| The numeric ID of the device | 
+ **id** | **int**| The numeric ID of the device | 
  **update_device_request** | [**UpdateDeviceRequest**](UpdateDeviceRequest.md)|  | [optional] 
 
 ### Return type
@@ -675,9 +1199,95 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Updated device properties |  -  |
+**401** | The request failed because the provided credentials are invalid or missing |  -  |
+**403** | The request failed because the provided credentials do not have the required permissions to perform this action |  -  |
+**404** | The request failed because the requested resource could not be found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_sensor_group**
+> UpdateSensorGroup200Response update_sensor_group(id, update_sensor_group_request=update_sensor_group_request)
+
+Update sensor group
+
+Update a some properties of the sensor group with the given identifier.  The request body should contain one or more modifiable properties of the sensor group. 
+
+### Example
+
+* Basic Authentication (basicAuth):
+
+```python
+import sensorbucket
+from sensorbucket.models.update_sensor_group200_response import UpdateSensorGroup200Response
+from sensorbucket.models.update_sensor_group_request import UpdateSensorGroupRequest
+from sensorbucket.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sensorbucket.nl/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = sensorbucket.Configuration(
+    host = "https://sensorbucket.nl/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: basicAuth
+configuration = sensorbucket.Configuration(
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
+)
+
+# Enter a context with an instance of the API client
+with sensorbucket.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = sensorbucket.DevicesApi(api_client)
+    id = 56 # int | The numeric ID of the sensor group
+    update_sensor_group_request = sensorbucket.UpdateSensorGroupRequest() # UpdateSensorGroupRequest |  (optional)
+
+    try:
+        # Update sensor group
+        api_response = api_instance.update_sensor_group(id, update_sensor_group_request=update_sensor_group_request)
+        print("The response of DevicesApi->update_sensor_group:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DevicesApi->update_sensor_group: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| The numeric ID of the sensor group | 
+ **update_sensor_group_request** | [**UpdateSensorGroupRequest**](UpdateSensorGroupRequest.md)|  | [optional] 
+
+### Return type
+
+[**UpdateSensorGroup200Response**](UpdateSensorGroup200Response.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Updated Sensor Group properties |  -  |
 **401** | The request failed because the provided credentials are invalid or missing |  -  |
 **403** | The request failed because the provided credentials do not have the required permissions to perform this action |  -  |
 **404** | The request failed because the requested resource could not be found |  -  |
