@@ -17,7 +17,9 @@ Lists ingresses that match the provided filter.
 
 ### Example
 
-* Basic Authentication (basicAuth):
+* Bearer Authentication (APIKey):
+* Bearer Authentication (Noop):
+* Api Key Authentication (CookieSession):
 
 ```python
 import sensorbucket
@@ -36,11 +38,21 @@ configuration = sensorbucket.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure HTTP basic authorization: basicAuth
+# Configure Bearer authorization: APIKey
 configuration = sensorbucket.Configuration(
-    username = os.environ["USERNAME"],
-    password = os.environ["PASSWORD"]
+    access_token = os.environ["BEARER_TOKEN"]
 )
+
+# Configure Bearer authorization: Noop
+configuration = sensorbucket.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Configure API key authorization: CookieSession
+configuration.api_key['CookieSession'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['CookieSession'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with sensorbucket.ApiClient(configuration) as api_client:
@@ -74,7 +86,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[basicAuth](../README.md#basicAuth)
+[APIKey](../README.md#APIKey), [Noop](../README.md#Noop), [CookieSession](../README.md#CookieSession)
 
 ### HTTP request headers
 
@@ -101,7 +113,9 @@ Lists traces that match the provided filter.
 
 ### Example
 
-* Basic Authentication (basicAuth):
+* Bearer Authentication (APIKey):
+* Bearer Authentication (Noop):
+* Api Key Authentication (CookieSession):
 
 ```python
 import sensorbucket
@@ -120,11 +134,21 @@ configuration = sensorbucket.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure HTTP basic authorization: basicAuth
+# Configure Bearer authorization: APIKey
 configuration = sensorbucket.Configuration(
-    username = os.environ["USERNAME"],
-    password = os.environ["PASSWORD"]
+    access_token = os.environ["BEARER_TOKEN"]
 )
+
+# Configure Bearer authorization: Noop
+configuration = sensorbucket.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Configure API key authorization: CookieSession
+configuration.api_key['CookieSession'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['CookieSession'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with sensorbucket.ApiClient(configuration) as api_client:
@@ -168,7 +192,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[basicAuth](../README.md#basicAuth)
+[APIKey](../README.md#APIKey), [Noop](../README.md#Noop), [CookieSession](../README.md#CookieSession)
 
 ### HTTP request headers
 
