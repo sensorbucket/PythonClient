@@ -17,7 +17,6 @@ Push an uplink message to the HTTP Importer for processing.  The request body an
 ### Example
 
 * Bearer Authentication (APIKey):
-* Bearer Authentication (Noop):
 * Api Key Authentication (CookieSession):
 
 ```python
@@ -37,11 +36,6 @@ configuration = sensorbucket.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: APIKey
-configuration = sensorbucket.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Configure Bearer authorization: Noop
 configuration = sensorbucket.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -82,7 +76,7 @@ void (empty response body)
 
 ### Authorization
 
-[APIKey](../README.md#APIKey), [Noop](../README.md#Noop), [CookieSession](../README.md#CookieSession)
+[APIKey](../README.md#APIKey), [CookieSession](../README.md#CookieSession)
 
 ### HTTP request headers
 

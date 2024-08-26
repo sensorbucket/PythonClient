@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **description** | **str** |  | 
 **state** | **str** |  | 
 **language** | **str** |  | 
-**organisation** | **int** |  | 
+**tenant_id** | **int** |  | [optional] 
 **revision** | **int** |  | 
 **status** | **str** |  | 
 

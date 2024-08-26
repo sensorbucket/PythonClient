@@ -20,7 +20,6 @@ Create an API key for a tenant with an expiration date. Permissions for the API 
 ### Example
 
 * Bearer Authentication (APIKey):
-* Bearer Authentication (Noop):
 * Api Key Authentication (CookieSession):
 
 ```python
@@ -42,11 +41,6 @@ configuration = sensorbucket.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: APIKey
-configuration = sensorbucket.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Configure Bearer authorization: Noop
 configuration = sensorbucket.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -87,7 +81,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey), [Noop](../README.md#Noop), [CookieSession](../README.md#CookieSession)
+[APIKey](../README.md#APIKey), [CookieSession](../README.md#CookieSession)
 
 ### HTTP request headers
 
@@ -116,7 +110,6 @@ Get an API Key by ID
 ### Example
 
 * Bearer Authentication (APIKey):
-* Bearer Authentication (Noop):
 * Api Key Authentication (CookieSession):
 
 ```python
@@ -137,11 +130,6 @@ configuration = sensorbucket.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: APIKey
-configuration = sensorbucket.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Configure Bearer authorization: Noop
 configuration = sensorbucket.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -182,7 +170,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey), [Noop](../README.md#Noop), [CookieSession](../README.md#CookieSession)
+[APIKey](../README.md#APIKey), [CookieSession](../README.md#CookieSession)
 
 ### HTTP request headers
 
@@ -211,7 +199,6 @@ Lists API Keys
 ### Example
 
 * Bearer Authentication (APIKey):
-* Bearer Authentication (Noop):
 * Api Key Authentication (CookieSession):
 
 ```python
@@ -232,11 +219,6 @@ configuration = sensorbucket.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: APIKey
-configuration = sensorbucket.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Configure Bearer authorization: Noop
 configuration = sensorbucket.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -281,7 +263,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey), [Noop](../README.md#Noop), [CookieSession](../README.md#CookieSession)
+[APIKey](../README.md#APIKey), [CookieSession](../README.md#CookieSession)
 
 ### HTTP request headers
 
@@ -310,7 +292,6 @@ Revokes an API key so that it can't be used anymore
 ### Example
 
 * Bearer Authentication (APIKey):
-* Bearer Authentication (Noop):
 * Api Key Authentication (CookieSession):
 
 ```python
@@ -331,11 +312,6 @@ configuration = sensorbucket.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: APIKey
-configuration = sensorbucket.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Configure Bearer authorization: Noop
 configuration = sensorbucket.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
@@ -376,7 +352,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](../README.md#APIKey), [Noop](../README.md#Noop), [CookieSession](../README.md#CookieSession)
+[APIKey](../README.md#APIKey), [CookieSession](../README.md#CookieSession)
 
 ### HTTP request headers
 
