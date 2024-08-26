@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **code** | **str** |  | 
 **state** | **int** |  | 
 **description** | **str** |  | 
-**organisation** | **str** |  | 
+**tenant_id** | **int** |  | 
 **properties** | **object** |  | 
 **altitude** | **float** |  | [optional] 
 **latitude** | **float** |  | [optional] 

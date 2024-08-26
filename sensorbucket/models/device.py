@@ -33,7 +33,7 @@ class Device(BaseModel):
     code: StrictStr
     state: StrictInt
     description: StrictStr
-    organisation: StrictStr
+    tenant_id: StrictInt
     properties: Dict[str, Any]
     altitude: Optional[Union[StrictFloat, StrictInt]] = None
     latitude: Optional[Union[StrictFloat, StrictInt]] = None
@@ -41,7 +41,7 @@ class Device(BaseModel):
     location_description: Optional[StrictStr] = None
     sensors: List[Sensor]
     created_at: datetime
-    __properties: ClassVar[List[str]] = ["id", "code", "state", "description", "organisation", "properties", "altitude", "latitude", "longitude", "location_description", "sensors", "created_at"]
+    __properties: ClassVar[List[str]] = ["id", "code", "state", "description", "tenant_id", "properties", "altitude", "latitude", "longitude", "location_description", "sensors", "created_at"]
 
     model_config = {
         "populate_by_name": True,
@@ -105,7 +105,7 @@ class Device(BaseModel):
             "code": obj.get("code"),
             "state": obj.get("state"),
             "description": obj.get("description"),
-            "organisation": obj.get("organisation"),
+            "tenant_id": obj.get("tenant_id"),
             "properties": obj.get("properties"),
             "altitude": obj.get("altitude"),
             "latitude": obj.get("latitude"),
