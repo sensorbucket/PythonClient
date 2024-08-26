@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from sensorbucket.models.ingress_dto import IngressDTO
 from typing import Optional, Set
@@ -36,11 +36,11 @@ class ArchivedIngress(BaseModel):
     ingress_dto: Optional[IngressDTO] = None
     __properties: ClassVar[List[str]] = ["tracing_id", "raw_message", "archived_at", "expires_at", "ingress_dto"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:

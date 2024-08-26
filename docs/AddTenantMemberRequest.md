@@ -18,12 +18,12 @@ json = "{}"
 # create an instance of AddTenantMemberRequest from a JSON string
 add_tenant_member_request_instance = AddTenantMemberRequest.from_json(json)
 # print the JSON string representation of the object
-print AddTenantMemberRequest.to_json()
+print(AddTenantMemberRequest.to_json())
 
 # convert the object into a dict
 add_tenant_member_request_dict = add_tenant_member_request_instance.to_dict()
 # create an instance of AddTenantMemberRequest from a dict
-add_tenant_member_request_form_dict = add_tenant_member_request.from_dict(add_tenant_member_request_dict)
+add_tenant_member_request_from_dict = AddTenantMemberRequest.from_dict(add_tenant_member_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

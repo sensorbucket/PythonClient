@@ -25,12 +25,12 @@ json = "{}"
 # create an instance of Sensor from a JSON string
 sensor_instance = Sensor.from_json(json)
 # print the JSON string representation of the object
-print Sensor.to_json()
+print(Sensor.to_json())
 
 # convert the object into a dict
 sensor_dict = sensor_instance.to_dict()
 # create an instance of Sensor from a dict
-sensor_form_dict = sensor.from_dict(sensor_dict)
+sensor_from_dict = Sensor.from_dict(sensor_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

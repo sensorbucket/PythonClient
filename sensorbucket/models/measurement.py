@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, StrictFloat, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictFloat, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing import Optional, Set
 from typing_extensions import Self
@@ -59,11 +59,11 @@ class Measurement(BaseModel):
     created_at: Optional[datetime] = None
     __properties: ClassVar[List[str]] = ["uplink_message_id", "device_id", "device_code", "device_description", "device_latitude", "device_longitude", "device_altitude", "device_location_description", "device_properties", "device_state", "sensor_id", "sensor_code", "sensor_description", "sensor_external_id", "sensor_properties", "sensor_brand", "sensor_archive_time", "datastream_id", "datastream_description", "datastream_observed_property", "datastream_unit_of_measurement", "measurement_timestamp", "measurement_value", "measurement_latitude", "measurement_longitude", "measurement_altitude", "measurement_properties", "measurement_expiration", "created_at"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:

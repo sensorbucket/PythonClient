@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "sensorbucket"
-version = "1.2.2-2"
+version = "1.2.2-3"
 description = "Sensorbucket API"
 authors = ["Tim van Osch <info@pollex.nl>"]
 license = "EUPLv1.2"

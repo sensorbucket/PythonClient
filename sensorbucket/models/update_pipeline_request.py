@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -32,11 +32,11 @@ class UpdatePipelineRequest(BaseModel):
     status: Optional[StrictStr] = Field(default=None, description="Used to change a pipeline from inactive to active or vice-versa.  Moving from active to inactive can also be achieve by `DELETE`ing the pipeline resource. ")
     __properties: ClassVar[List[str]] = ["description", "steps", "status"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:

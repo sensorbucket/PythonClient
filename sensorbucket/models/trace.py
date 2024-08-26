@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List
 from sensorbucket.models.trace_step import TraceStep
 from typing import Optional, Set
@@ -37,11 +37,11 @@ class Trace(BaseModel):
     steps: List[TraceStep]
     __properties: ClassVar[List[str]] = ["tracing_id", "device_id", "start_time", "status", "status_string", "steps"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -79,9 +79,9 @@ class Trace(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in steps (list)
         _items = []
         if self.steps:
-            for _item in self.steps:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_steps in self.steps:
+                if _item_steps:
+                    _items.append(_item_steps.to_dict())
             _dict['steps'] = _items
         return _dict
 

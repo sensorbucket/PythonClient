@@ -21,12 +21,12 @@ json = "{}"
 # create an instance of IngressDTO from a JSON string
 ingress_dto_instance = IngressDTO.from_json(json)
 # print the JSON string representation of the object
-print IngressDTO.to_json()
+print(IngressDTO.to_json())
 
 # convert the object into a dict
 ingress_dto_dict = ingress_dto_instance.to_dict()
 # create an instance of IngressDTO from a dict
-ingress_dto_form_dict = ingress_dto.from_dict(ingress_dto_dict)
+ingress_dto_from_dict = IngressDTO.from_dict(ingress_dto_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, StrictInt
+from pydantic import BaseModel, ConfigDict, StrictInt
 from typing import Any, ClassVar, Dict, List
 from sensorbucket.models.paginated_response_links import PaginatedResponseLinks
 from typing import Optional, Set
@@ -34,11 +34,11 @@ class PaginatedResponse(BaseModel):
     data: List[Any]
     __properties: ClassVar[List[str]] = ["links", "page_size", "total_count", "data"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:

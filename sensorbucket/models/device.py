@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, StrictFloat, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictFloat, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from sensorbucket.models.sensor import Sensor
 from typing import Optional, Set
@@ -43,11 +43,11 @@ class Device(BaseModel):
     created_at: datetime
     __properties: ClassVar[List[str]] = ["id", "code", "state", "description", "tenant_id", "properties", "altitude", "latitude", "longitude", "location_description", "sensors", "created_at"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -85,9 +85,9 @@ class Device(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in sensors (list)
         _items = []
         if self.sensors:
-            for _item in self.sensors:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_sensors in self.sensors:
+                if _item_sensors:
+                    _items.append(_item_sensors.to_dict())
             _dict['sensors'] = _items
         return _dict
 
