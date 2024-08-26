@@ -15,7 +15,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.2.2"
+__version__ = "1.2.2-2"
 
 # import apis into sdk package
 from sensorbucket.api.api_keys_api import APIKeysApi
