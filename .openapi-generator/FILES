@@ -23,6 +23,7 @@ docs/CreateSensorRequest.md
 docs/CreateUserWorkerRequest.md
 docs/CreateWorker201Response.md
 docs/Datastream.md
+docs/DeleteDevice200Response.md
 docs/DeleteDeviceSensor200Response.md
 docs/DeleteSensorFromSensorGroup200Response.md
 docs/DeleteSensorGroup200Response.md
@@ -112,6 +113,7 @@ sensorbucket/models/create_sensor_request.py
 sensorbucket/models/create_user_worker_request.py
 sensorbucket/models/create_worker201_response.py
 sensorbucket/models/datastream.py
+sensorbucket/models/delete_device200_response.py
 sensorbucket/models/delete_device_sensor200_response.py
 sensorbucket/models/delete_sensor_from_sensor_group200_response.py
 sensorbucket/models/delete_sensor_group200_response.py

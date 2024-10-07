@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**measurement_id** | **int** |  | 
 **uplink_message_id** | **str** |  | 
 **device_id** | **int** |  | 
 **device_code** | **str** |  | 

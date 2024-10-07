@@ -8,7 +8,8 @@ Method | HTTP request | Description
 [**create_device**](DevicesApi.md#create_device) | **POST** /devices | Create device
 [**create_device_sensor**](DevicesApi.md#create_device_sensor) | **POST** /devices/{device_id}/sensors | Create sensor for device
 [**create_sensor_group**](DevicesApi.md#create_sensor_group) | **POST** /sensor-groups | Create sensor group
-[**delete_device_sensor**](DevicesApi.md#delete_device_sensor) | **DELETE** /device/{device_id}/sensors/{sensor_code} | Delete sensor
+[**delete_device**](DevicesApi.md#delete_device) | **DELETE** /devices/{id} | Delete device
+[**delete_device_sensor**](DevicesApi.md#delete_device_sensor) | **DELETE** /devices/{device_id}/sensors/{sensor_code} | Delete sensor
 [**delete_sensor_from_sensor_group**](DevicesApi.md#delete_sensor_from_sensor_group) | **DELETE** /sensor-groups/{id}/sensors/{sensor_id} | Delete sensor from sensor group
 [**delete_sensor_group**](DevicesApi.md#delete_sensor_group) | **DELETE** /sensor-groups/{id} | Delete sensor group
 [**get_device**](DevicesApi.md#get_device) | **GET** /devices/{id} | Get device
@@ -376,6 +377,94 @@ Name | Type | Description  | Notes
 **201** | Created |  -  |
 **401** | The request failed because the provided credentials are invalid or missing |  -  |
 **403** | The request failed because the provided credentials do not have the required permissions to perform this action |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_device**
+> DeleteDevice200Response delete_device(id)
+
+Delete device
+
+Delete the device with the given identifier. 
+
+### Example
+
+* Bearer Authentication (APIKey):
+* Api Key Authentication (CookieSession):
+
+```python
+import sensorbucket
+from sensorbucket.models.delete_device200_response import DeleteDevice200Response
+from sensorbucket.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sensorbucket.nl/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = sensorbucket.Configuration(
+    host = "https://sensorbucket.nl/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: APIKey
+configuration = sensorbucket.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Configure API key authorization: CookieSession
+configuration.api_key['CookieSession'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['CookieSession'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with sensorbucket.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = sensorbucket.DevicesApi(api_client)
+    id = 56 # int | The numeric ID of the device
+
+    try:
+        # Delete device
+        api_response = api_instance.delete_device(id)
+        print("The response of DevicesApi->delete_device:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DevicesApi->delete_device: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| The numeric ID of the device | 
+
+### Return type
+
+[**DeleteDevice200Response**](DeleteDevice200Response.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [CookieSession](../README.md#CookieSession)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Device deleted successfully |  -  |
+**401** | The request failed because the provided credentials are invalid or missing |  -  |
+**403** | The request failed because the provided credentials do not have the required permissions to perform this action |  -  |
+**404** | The request failed because the requested resource could not be found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

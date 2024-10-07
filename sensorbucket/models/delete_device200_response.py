@@ -18,30 +18,17 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class UpdateWorkerRequest(BaseModel):
+class DeleteDevice200Response(BaseModel):
     """
-    UpdateWorkerRequest
+    DeleteDevice200Response
     """ # noqa: E501
-    name: Optional[StrictStr] = None
-    description: Optional[StrictStr] = None
-    state: Optional[StrictStr] = None
-    user_code: Optional[StrictStr] = Field(default=None, description="base64 encoded user code")
-    __properties: ClassVar[List[str]] = ["name", "description", "state", "user_code"]
-
-    @field_validator('state')
-    def state_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['enabled', 'disabled']):
-            raise ValueError("must be one of enum values ('enabled', 'disabled')")
-        return value
+    message: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["message"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -61,7 +48,7 @@ class UpdateWorkerRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of UpdateWorkerRequest from a JSON string"""
+        """Create an instance of DeleteDevice200Response from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -86,7 +73,7 @@ class UpdateWorkerRequest(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of UpdateWorkerRequest from a dict"""
+        """Create an instance of DeleteDevice200Response from a dict"""
         if obj is None:
             return None
 
@@ -94,10 +81,7 @@ class UpdateWorkerRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name": obj.get("name"),
-            "description": obj.get("description"),
-            "state": obj.get("state"),
-            "user_code": obj.get("user_code")
+            "message": obj.get("message")
         })
         return _obj
 
