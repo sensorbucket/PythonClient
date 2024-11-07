@@ -34,6 +34,7 @@ docs/GetDatastream200Response.md
 docs/GetDatastream200ResponseData.md
 docs/GetDevice200Response.md
 docs/GetPipeline200Response.md
+docs/GetSensor200Response.md
 docs/GetSensorGroup200Response.md
 docs/GetWorker200Response.md
 docs/GetWorkerUserCode200Response.md
@@ -68,8 +69,10 @@ docs/UpdateDevice200Response.md
 docs/UpdateDeviceRequest.md
 docs/UpdatePipeline200Response.md
 docs/UpdatePipelineRequest.md
+docs/UpdateSensor200Response.md
 docs/UpdateSensorGroup200Response.md
 docs/UpdateSensorGroupRequest.md
+docs/UpdateSensorRequest.md
 docs/UpdateTenantMemberRequest.md
 docs/UpdateWorker200Response.md
 docs/UpdateWorkerRequest.md
@@ -123,6 +126,7 @@ sensorbucket/models/get_datastream200_response.py
 sensorbucket/models/get_datastream200_response_data.py
 sensorbucket/models/get_device200_response.py
 sensorbucket/models/get_pipeline200_response.py
+sensorbucket/models/get_sensor200_response.py
 sensorbucket/models/get_sensor_group200_response.py
 sensorbucket/models/get_worker200_response.py
 sensorbucket/models/get_worker_user_code200_response.py
@@ -153,8 +157,10 @@ sensorbucket/models/update_device200_response.py
 sensorbucket/models/update_device_request.py
 sensorbucket/models/update_pipeline200_response.py
 sensorbucket/models/update_pipeline_request.py
+sensorbucket/models/update_sensor200_response.py
 sensorbucket/models/update_sensor_group200_response.py
 sensorbucket/models/update_sensor_group_request.py
+sensorbucket/models/update_sensor_request.py
 sensorbucket/models/update_tenant_member_request.py
 sensorbucket/models/update_worker200_response.py
 sensorbucket/models/update_worker_request.py

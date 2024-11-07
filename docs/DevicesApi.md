@@ -13,12 +13,14 @@ Method | HTTP request | Description
 [**delete_sensor_from_sensor_group**](DevicesApi.md#delete_sensor_from_sensor_group) | **DELETE** /sensor-groups/{id}/sensors/{sensor_id} | Delete sensor from sensor group
 [**delete_sensor_group**](DevicesApi.md#delete_sensor_group) | **DELETE** /sensor-groups/{id} | Delete sensor group
 [**get_device**](DevicesApi.md#get_device) | **GET** /devices/{id} | Get device
+[**get_sensor**](DevicesApi.md#get_sensor) | **GET** /devices/{device_id}/sensors/{sensor_code} | Get sensor
 [**get_sensor_group**](DevicesApi.md#get_sensor_group) | **GET** /sensor-groups/{id} | Get sensor group
 [**list_device_sensors**](DevicesApi.md#list_device_sensors) | **GET** /devices/{device_id}/sensors | List sensors device
 [**list_devices**](DevicesApi.md#list_devices) | **GET** /devices | List devices
 [**list_sensor_groups**](DevicesApi.md#list_sensor_groups) | **GET** /sensor-groups | List sensor groups
 [**list_sensors**](DevicesApi.md#list_sensors) | **GET** /sensors | List sensors
 [**update_device**](DevicesApi.md#update_device) | **PATCH** /devices/{id} | Update device properties
+[**update_sensor**](DevicesApi.md#update_sensor) | **PATCH** /devices/{device_id}/sensors/{sensor_code} | Update sensor properties
 [**update_sensor_group**](DevicesApi.md#update_sensor_group) | **PATCH** /sensor-groups/{id} | Update sensor group
 
 
@@ -824,6 +826,96 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_sensor**
+> GetSensor200Response get_sensor(device_id, sensor_code)
+
+Get sensor
+
+Get the sensor with the given identifier.  The returned sensor will also include the full model of the sensors attached to that sensor. 
+
+### Example
+
+* Bearer Authentication (APIKey):
+* Api Key Authentication (CookieSession):
+
+```python
+import sensorbucket
+from sensorbucket.models.get_sensor200_response import GetSensor200Response
+from sensorbucket.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sensorbucket.nl/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = sensorbucket.Configuration(
+    host = "https://sensorbucket.nl/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: APIKey
+configuration = sensorbucket.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Configure API key authorization: CookieSession
+configuration.api_key['CookieSession'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['CookieSession'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with sensorbucket.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = sensorbucket.DevicesApi(api_client)
+    device_id = 56 # int | The identifier of the device
+    sensor_code = 'sensor_code_example' # str | The code of the sensor
+
+    try:
+        # Get sensor
+        api_response = api_instance.get_sensor(device_id, sensor_code)
+        print("The response of DevicesApi->get_sensor:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DevicesApi->get_sensor: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **device_id** | **int**| The identifier of the device | 
+ **sensor_code** | **str**| The code of the sensor | 
+
+### Return type
+
+[**GetSensor200Response**](GetSensor200Response.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [CookieSession](../README.md#CookieSession)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Fetched sensor |  -  |
+**401** | The request failed because the provided credentials are invalid or missing |  -  |
+**403** | The request failed because the provided credentials do not have the required permissions to perform this action |  -  |
+**404** | The request failed because the requested resource could not be found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_sensor_group**
 > GetSensorGroup200Response get_sensor_group(id)
 
@@ -1376,6 +1468,99 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Updated device properties |  -  |
+**401** | The request failed because the provided credentials are invalid or missing |  -  |
+**403** | The request failed because the provided credentials do not have the required permissions to perform this action |  -  |
+**404** | The request failed because the requested resource could not be found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_sensor**
+> UpdateSensor200Response update_sensor(device_id, sensor_code, update_sensor_request=update_sensor_request)
+
+Update sensor properties
+
+Update a some properties of the sensor with the given identifier.  The request body should contain one or more modifiable properties of the Sensor. 
+
+### Example
+
+* Bearer Authentication (APIKey):
+* Api Key Authentication (CookieSession):
+
+```python
+import sensorbucket
+from sensorbucket.models.update_sensor200_response import UpdateSensor200Response
+from sensorbucket.models.update_sensor_request import UpdateSensorRequest
+from sensorbucket.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sensorbucket.nl/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = sensorbucket.Configuration(
+    host = "https://sensorbucket.nl/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: APIKey
+configuration = sensorbucket.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Configure API key authorization: CookieSession
+configuration.api_key['CookieSession'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['CookieSession'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with sensorbucket.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = sensorbucket.DevicesApi(api_client)
+    device_id = 56 # int | The identifier of the device
+    sensor_code = 'sensor_code_example' # str | The code of the sensor
+    update_sensor_request = sensorbucket.UpdateSensorRequest() # UpdateSensorRequest |  (optional)
+
+    try:
+        # Update sensor properties
+        api_response = api_instance.update_sensor(device_id, sensor_code, update_sensor_request=update_sensor_request)
+        print("The response of DevicesApi->update_sensor:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DevicesApi->update_sensor: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **device_id** | **int**| The identifier of the device | 
+ **sensor_code** | **str**| The code of the sensor | 
+ **update_sensor_request** | [**UpdateSensorRequest**](UpdateSensorRequest.md)|  | [optional] 
+
+### Return type
+
+[**UpdateSensor200Response**](UpdateSensor200Response.md)
+
+### Authorization
+
+[APIKey](../README.md#APIKey), [CookieSession](../README.md#CookieSession)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Updated sensor properties |  -  |
 **401** | The request failed because the provided credentials are invalid or missing |  -  |
 **403** | The request failed because the provided credentials do not have the required permissions to perform this action |  -  |
 **404** | The request failed because the requested resource could not be found |  -  |

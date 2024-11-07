@@ -18,22 +18,21 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt
-from typing import Any, ClassVar, Dict, List
-from sensorbucket.models.paginated_response_links import PaginatedResponseLinks
-from sensorbucket.models.sensor import Sensor
+from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class ListDeviceSensors200Response(BaseModel):
+class UpdateSensorRequest(BaseModel):
     """
-    ListDeviceSensors200Response
+    UpdateSensorRequest
     """ # noqa: E501
-    links: PaginatedResponseLinks
-    page_size: StrictInt
-    total_count: StrictInt
-    data: List[Sensor]
-    __properties: ClassVar[List[str]] = ["links", "page_size", "total_count", "data"]
+    description: Optional[StrictStr] = None
+    external_id: Optional[StrictStr] = None
+    brand: Optional[StrictStr] = None
+    properties: Optional[Dict[str, Any]] = None
+    archive_time: Optional[StrictInt] = None
+    __properties: ClassVar[List[str]] = ["description", "external_id", "brand", "properties", "archive_time"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -53,7 +52,7 @@ class ListDeviceSensors200Response(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ListDeviceSensors200Response from a JSON string"""
+        """Create an instance of UpdateSensorRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -74,21 +73,11 @@ class ListDeviceSensors200Response(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of links
-        if self.links:
-            _dict['links'] = self.links.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of each item in data (list)
-        _items = []
-        if self.data:
-            for _item_data in self.data:
-                if _item_data:
-                    _items.append(_item_data.to_dict())
-            _dict['data'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ListDeviceSensors200Response from a dict"""
+        """Create an instance of UpdateSensorRequest from a dict"""
         if obj is None:
             return None
 
@@ -96,10 +85,11 @@ class ListDeviceSensors200Response(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "links": PaginatedResponseLinks.from_dict(obj["links"]) if obj.get("links") is not None else None,
-            "page_size": obj.get("page_size"),
-            "total_count": obj.get("total_count"),
-            "data": [Sensor.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None
+            "description": obj.get("description"),
+            "external_id": obj.get("external_id"),
+            "brand": obj.get("brand"),
+            "properties": obj.get("properties"),
+            "archive_time": obj.get("archive_time")
         })
         return _obj
 
